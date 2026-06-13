@@ -69,8 +69,21 @@ async function main() {
     codesData.codes.push(newCode);
 
     fs.writeFileSync(codesPath, JSON.stringify(codesData, null, 2));
-    console.log('\n✓ Código guardado correctamente');
+    console.log('\n✓ Código guardado correctamente en data/payment-codes.json');
     console.log(`\n📋 Envía este código al cliente: ${code}\n`);
+
+    // Mostrar el JSON completo para copiar a Netlify
+    console.log('\n' + '='.repeat(80));
+    console.log('⚠️  IMPORTANTE: ACTUALIZA LA VARIABLE DE ENTORNO EN NETLIFY');
+    console.log('='.repeat(80));
+    console.log('\n1. Ve a tu dashboard de Netlify → Site settings → Environment variables');
+    console.log('2. Encuentra la variable PAYMENT_CODES (o créala si no existe)');
+    console.log('3. Copia TODO el JSON de abajo y pégalo como valor:\n');
+    console.log('─'.repeat(80));
+    console.log(JSON.stringify(codesData));
+    console.log('─'.repeat(80));
+    console.log('\n4. Guarda los cambios en Netlify');
+    console.log('5. Netlify redesplegará automáticamente con los nuevos códigos\n');
   }
 
   rl.close();

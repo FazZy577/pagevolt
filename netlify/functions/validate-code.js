@@ -1,6 +1,4 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const fs = require('fs');
-const path = require('path');
 
 exports.handler = async (event, context) => {
   console.log('validate-code function called', { method: event.httpMethod });
@@ -37,21 +35,29 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Read payment codes file with absolute path
-    // In Netlify, the working directory is the site root
-    const codesPath = path.resolve(process.cwd(), 'data/payment-codes.json');
-    console.log('Reading codes from:', codesPath);
+    // Read payment codes from environment variable
+    const paymentCodesEnv = process.env.PAYMENT_CODES;
 
-    if (!fs.existsSync(codesPath)) {
-      console.error('payment-codes.json not found at:', codesPath);
+    if (!paymentCodesEnv) {
+      console.error('PAYMENT_CODES environment variable not found');
       return {
         statusCode: 500,
         headers,
-        body: JSON.stringify({ error: 'Base de datos de códigos no encontrada' })
+        body: JSON.stringify({ error: 'Configuración de códigos de pago no encontrada. Contacta con el administrador.' })
       };
     }
 
-    const codesData = JSON.parse(fs.readFileSync(codesPath, 'utf8'));
+    let codesData;
+    try {
+      codesData = JSON.parse(paymentCodesEnv);
+    } catch (parseError) {
+      console.error('Error parsing PAYMENT_CODES:', parseError);
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({ error: 'Error en configuración de códigos. Contacta con el administrador.' })
+      };
+    }
 
     // Find the code
     const paymentCode = codesData.codes.find(c => c.code === code.toUpperCase());

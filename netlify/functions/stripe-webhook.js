@@ -1,6 +1,4 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const fs = require('fs');
-const path = require('path');
 
 exports.handler = async (event, context) => {
   console.log('stripe-webhook function called', { method: event.httpMethod });
@@ -51,35 +49,8 @@ exports.handler = async (event, context) => {
       const code = paymentIntent.metadata.code;
 
       console.log('Payment succeeded for code:', code);
-
-      // Update payment code status with absolute path
-      const codesPath = path.resolve(process.cwd(), 'data/payment-codes.json');
-      console.log('Updating codes at:', codesPath);
-
-      if (!fs.existsSync(codesPath)) {
-        console.error('payment-codes.json not found at:', codesPath);
-        return {
-          statusCode: 500,
-          headers,
-          body: JSON.stringify({ error: 'Base de datos de códigos no encontrada' })
-        };
-      }
-
-      const codesData = JSON.parse(fs.readFileSync(codesPath, 'utf8'));
-
-      const codeIndex = codesData.codes.findIndex(c => c.code === code);
-
-      if (codeIndex !== -1) {
-        codesData.codes[codeIndex].status = 'paid';
-        codesData.codes[codeIndex].paidAt = new Date().toISOString();
-        codesData.codes[codeIndex].stripePaymentId = paymentIntent.id;
-
-        fs.writeFileSync(codesPath, JSON.stringify(codesData, null, 2));
-
-        console.log(`Payment successful for code: ${code}`);
-      } else {
-        console.warn(`Code not found in database: ${code}`);
-      }
+      console.log('NOTA: El webhook recibió el pago pero NO puede actualizar PAYMENT_CODES automáticamente.');
+      console.log('Debes actualizar manualmente la variable PAYMENT_CODES en Netlify marcando el código como "paid".');
     }
 
     return {
