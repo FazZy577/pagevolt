@@ -21,6 +21,17 @@
       "createdAt": "2026-06-13T22:22:49.583Z",
       "description": "web normal - Bar de l'Avia",
       "email": "popelvlad6@gmail.com"
+    },
+    {
+      "code": "PV-PANET-API1D",
+      "clientName": "Panet",
+      "amount": 0,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 0,
+      "status": "pending",
+      "createdAt": "2026-06-13T23:06:54.042Z",
+      "description": "Prueba - Panet",
+      "email": "Vlad577@hotmail.com"
     }
   ]
 }
