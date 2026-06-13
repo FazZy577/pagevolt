@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 exports.handler = async (event, context) => {
+  console.log('validate-code function called', { method: event.httpMethod });
+
   // CORS headers
   const headers = {
     'Access-Control-Allow-Origin': '*',
@@ -35,14 +37,27 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Read payment codes file
-    const codesPath = path.join(__dirname, '../../data/payment-codes.json');
+    // Read payment codes file with absolute path
+    // In Netlify, the working directory is the site root
+    const codesPath = path.resolve(process.cwd(), 'data/payment-codes.json');
+    console.log('Reading codes from:', codesPath);
+
+    if (!fs.existsSync(codesPath)) {
+      console.error('payment-codes.json not found at:', codesPath);
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({ error: 'Base de datos de códigos no encontrada' })
+      };
+    }
+
     const codesData = JSON.parse(fs.readFileSync(codesPath, 'utf8'));
 
     // Find the code
     const paymentCode = codesData.codes.find(c => c.code === code.toUpperCase());
 
     if (!paymentCode) {
+      console.log('Code not found:', code);
       return {
         statusCode: 404,
         headers,
@@ -78,6 +93,8 @@ exports.handler = async (event, context) => {
       receipt_email: paymentCode.email,
       description: `${paymentCode.description} - ${paymentCode.paymentType}`
     });
+
+    console.log('PaymentIntent created successfully:', paymentIntent.id);
 
     return {
       statusCode: 200,

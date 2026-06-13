@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 exports.handler = async (event, context) => {
+  console.log('stripe-webhook function called', { method: event.httpMethod });
+
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
@@ -48,8 +50,21 @@ exports.handler = async (event, context) => {
       const paymentIntent = stripeEvent.data.object;
       const code = paymentIntent.metadata.code;
 
-      // Update payment code status
-      const codesPath = path.join(__dirname, '../../data/payment-codes.json');
+      console.log('Payment succeeded for code:', code);
+
+      // Update payment code status with absolute path
+      const codesPath = path.resolve(process.cwd(), 'data/payment-codes.json');
+      console.log('Updating codes at:', codesPath);
+
+      if (!fs.existsSync(codesPath)) {
+        console.error('payment-codes.json not found at:', codesPath);
+        return {
+          statusCode: 500,
+          headers,
+          body: JSON.stringify({ error: 'Base de datos de códigos no encontrada' })
+        };
+      }
+
       const codesData = JSON.parse(fs.readFileSync(codesPath, 'utf8'));
 
       const codeIndex = codesData.codes.findIndex(c => c.code === code);
@@ -62,6 +77,8 @@ exports.handler = async (event, context) => {
         fs.writeFileSync(codesPath, JSON.stringify(codesData, null, 2));
 
         console.log(`Payment successful for code: ${code}`);
+      } else {
+        console.warn(`Code not found in database: ${code}`);
       }
     }
 
