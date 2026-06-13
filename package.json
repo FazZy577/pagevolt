@@ -7,11 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "generate-code": "node scripts/generate-code.js"
+    "generate-code": "node scripts/generate-code.js",
+    "nuevo-cliente": "node scripts/nuevo-cliente.js",
+    "setup-local": "node scripts/setup-local.js"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^6.6.0",
     "@stripe/stripe-js": "^9.8.0",
+    "dotenv": "^16.6.1",
     "framer-motion": "^11.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
