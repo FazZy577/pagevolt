@@ -1,0 +1,130 @@
+.process {
+  background: var(--color-surface);
+}
+
+.process-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 5rem;
+}
+
+.process-header .section-subtitle {
+  margin: 0 auto;
+}
+
+.process-timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.process-line {
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  bottom: 32px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-accent) 0%, rgba(99, 102, 241, 0.2) 100%);
+  z-index: 0;
+}
+
+.process-step {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  z-index: 1;
+}
+
+.process-step:last-child {
+  margin-bottom: 0;
+}
+
+.process-step-circle {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  background: var(--color-bg);
+  border: 3px solid var(--color-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.process-step-circle::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--transition-base);
+}
+
+.process-step:hover .process-step-circle {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  transform: scale(1.1);
+}
+
+.process-step:hover .process-step-circle::before {
+  opacity: 0.15;
+}
+
+.process-step-content {
+  flex: 1;
+  padding-top: 0.5rem;
+}
+
+.process-step-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--color-text);
+}
+
+.process-step-description {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .process-header {
+    margin-bottom: 3rem;
+  }
+
+  .process-line {
+    left: 24px;
+    top: 24px;
+    bottom: 24px;
+  }
+
+  .process-step {
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .process-step-circle {
+    width: 48px;
+    height: 48px;
+    font-size: 0.875rem;
+    border-width: 2px;
+  }
+
+  .process-step-title {
+    font-size: 1.125rem;
+  }
+
+  .process-step-description {
+    font-size: 0.875rem;
+  }
+}

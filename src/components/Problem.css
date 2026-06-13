@@ -1,0 +1,149 @@
+.problem {
+  background: var(--color-bg);
+  position: relative;
+  padding-top: 0;
+  overflow: hidden;
+}
+
+.problem-marquee {
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-accent);
+  padding: 1rem 0;
+  margin-bottom: 5rem;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 2rem;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.marquee-item {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-bg);
+  letter-spacing: 0.1em;
+}
+
+.marquee-dot {
+  color: rgba(10, 10, 10, 0.4);
+  font-weight: 700;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.problem-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+
+.problem-title {
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.problem-title-accent {
+  color: var(--color-accent);
+}
+
+.problem-text {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.problem-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.problem-stat-card {
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.problem-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-slow);
+}
+
+.problem-stat-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-4px);
+}
+
+.problem-stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.problem-stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.problem-stat-text {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .problem-marquee {
+    padding: 0.875rem 0;
+    margin-bottom: 3rem;
+  }
+
+  .marquee-item {
+    font-size: 0.75rem;
+  }
+
+  .problem-content {
+    margin-bottom: 3rem;
+  }
+
+  .problem-stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .problem-stat-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .problem-stat-number {
+    font-size: 2.5rem;
+  }
+}

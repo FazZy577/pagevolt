@@ -1,0 +1,123 @@
+.contact {
+  background: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.contact-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.contact-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(99, 102, 241, 0.08), transparent);
+}
+
+.contact-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact-title {
+  margin-bottom: 1.5rem;
+  line-height: 1.15;
+}
+
+.contact-title-accent {
+  color: var(--color-accent);
+}
+
+.contact-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+.contact-cta svg {
+  transition: transform var(--transition-base);
+}
+
+.contact-cta:hover svg {
+  transform: translateX(4px);
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-info-icon {
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+.contact-info-label {
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.contact-info-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .contact-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+    margin-bottom: 3rem;
+  }
+
+  .contact-actions .btn {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+
+  .contact-info-item {
+    text-align: left;
+  }
+}
