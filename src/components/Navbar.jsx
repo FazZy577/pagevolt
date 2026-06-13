@@ -31,6 +31,7 @@ export default function Navbar() {
           <li><a href="#proceso">Proceso</a></li>
           <li><a href="#precios">Precios</a></li>
           <li><a href="#faq">FAQ</a></li>
+          <li><a href="/pago">Pago</a></li>
         </ul>
 
         <a href="#contacto" className="navbar-cta btn btn-primary">

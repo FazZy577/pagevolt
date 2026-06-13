@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Payment from './components/Payment';
 import PaymentSuccess from './components/PaymentSuccess';
 import Admin from './components/Admin';
+import CustomCursor from './components/CustomCursor';
 import './styles/globals.css';
 import './styles/animations.css';
 
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <CustomCursor />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pago" element={<Payment />} />

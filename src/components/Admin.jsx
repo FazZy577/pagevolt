@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
 import './Admin.css';
 
 export default function Admin() {
@@ -103,6 +104,7 @@ export default function Admin() {
   if (!isAuthenticated) {
     return (
       <div className="admin-page">
+        <Navbar />
         <div className="admin-login-container">
           <motion.div
             className="admin-login-card"
@@ -155,6 +157,7 @@ export default function Admin() {
 
   return (
     <div className="admin-page">
+      <Navbar />
       <div className="admin-container">
         <motion.div
           className="admin-content"

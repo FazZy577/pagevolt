@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import Navbar from './Navbar';
 import './Payment.css';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
@@ -129,6 +130,7 @@ export default function Payment() {
 
   return (
     <div className="payment-page">
+      <Navbar />
       <div className="payment-container">
         <motion.div
           className="payment-content"
