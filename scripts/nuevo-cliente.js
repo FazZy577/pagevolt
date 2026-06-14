@@ -37,18 +37,19 @@ function generateCode(clientName) {
 async function updateNetlifyEnvVar(siteId, token, key, value) {
   console.log('\n📡 Actualizando variable de entorno en Netlify...');
 
+  const accountId = '69da09ed205345073b54beed';
+
   try {
-    // Usar el endpoint correcto de Netlify API para actualizar env var
-    const response = await fetch(
-      `https://api.netlify.com/api/v1/sites/${siteId}/env/${key}`,
+    // Intentar PATCH primero (actualizar variable existente)
+    const patchResponse = await fetch(
+      `https://api.netlify.com/api/v1/accounts/${accountId}/env/${key}`,
       {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-          key: key,
           values: [
             {
               value: value,
@@ -59,39 +60,78 @@ async function updateNetlifyEnvVar(siteId, token, key, value) {
       }
     );
 
-    const responseData = await response.json();
+    let success = false;
 
-    if (!response.ok) {
-      console.error('Error response:', responseData);
-      throw new Error(`Error al actualizar variable: ${response.status} ${response.statusText}`);
-    }
+    if (patchResponse.status === 404) {
+      // Variable no existe, crearla con POST
+      console.log('Variable no existe, creándola...');
 
-    console.log('✅ Variable PAYMENT_CODES actualizada en Netlify');
+      const postResponse = await fetch(
+        `https://api.netlify.com/api/v1/accounts/${accountId}/env`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify([
+            {
+              key: key,
+              values: [
+                {
+                  value: value,
+                  context: 'all'
+                }
+              ]
+            }
+          ])
+        }
+      );
 
-    // Triggerar un nuevo deploy para aplicar los cambios
-    console.log('\n🚀 Triggerando nuevo deploy en Netlify...');
-    const deployResponse = await fetch(
-      `https://api.netlify.com/api/v1/sites/${siteId}/builds`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          clear_cache: false
-        })
+      if (!postResponse.ok) {
+        const errorData = await postResponse.json();
+        console.error('Error al crear variable:', errorData);
+        throw new Error(`Error al crear variable: ${postResponse.status} ${postResponse.statusText}`);
       }
-    );
 
-    if (!deployResponse.ok) {
-      console.log('⚠️  No se pudo triggerar el deploy automáticamente');
-      console.log('   Netlify redesplegará en el próximo git push');
+      success = true;
+      console.log('✅ Variable PAYMENT_CODES creada en Netlify');
+    } else if (patchResponse.ok) {
+      success = true;
+      console.log('✅ Variable PAYMENT_CODES actualizada en Netlify');
     } else {
-      console.log('✅ Deploy triggerando en Netlify');
+      const errorData = await patchResponse.json();
+      console.error('Error response:', errorData);
+      throw new Error(`Error al actualizar variable: ${patchResponse.status} ${patchResponse.statusText}`);
     }
 
-    return true;
+    if (success) {
+      // Triggerar un nuevo deploy para aplicar los cambios
+      console.log('\n🚀 Triggerando nuevo deploy en Netlify...');
+      const deployResponse = await fetch(
+        `https://api.netlify.com/api/v1/sites/${siteId}/builds`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            clear_cache: false
+          })
+        }
+      );
+
+      if (!deployResponse.ok) {
+        console.log('⚠️  No se pudo triggerar el deploy automáticamente');
+        console.log('   Netlify redesplegará en el próximo git push');
+      } else {
+        console.log('✅ Deploy triggerando en Netlify');
+        console.log('   El nuevo código estará disponible en 1-2 minutos');
+      }
+    }
+
+    return success;
   } catch (error) {
     console.error('❌ Error al actualizar Netlify:', error.message);
     return false;
