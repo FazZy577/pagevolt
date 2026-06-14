@@ -35,7 +35,15 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="navbar-container">
-        <div className="navbar-spacer"></div>
+        <button
+          className="navbar-mobile-toggle"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
         <Link to="/" className="navbar-logo">
           Page<span>Volt</span>
@@ -49,15 +57,7 @@ export default function Navbar() {
           <li><Link to="/pago">Pago</Link></li>
         </ul>
 
-        <button
-          className="navbar-mobile-toggle"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <div className="navbar-spacer"></div>
 
         <a href="#contacto" className="navbar-cta btn btn-primary">
           Empezar
@@ -77,7 +77,7 @@ export default function Navbar() {
           background: '#0f0f0f',
           position: 'fixed',
           top: 0,
-          right: 0,
+          left: 0,
           bottom: 0,
           width: '75%',
           maxWidth: '320px',
@@ -86,9 +86,9 @@ export default function Navbar() {
           display: 'flex',
           flexDirection: 'column',
           padding: '2rem 1.5rem',
-          transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
+          transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(-100%)',
           transition: 'transform 0.3s ease',
-          boxShadow: '-4px 0 24px rgba(0,0,0,0.5)',
+          boxShadow: '4px 0 24px rgba(0,0,0,0.5)',
           overflowY: 'auto'
         }}
       >
