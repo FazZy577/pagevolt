@@ -98,6 +98,17 @@
       "createdAt": "2026-06-14T15:45:37.527Z",
       "description": " - prueba 4",
       "email": ""
+    },
+    {
+      "code": "PV-PRUEBA-1A8ZC",
+      "clientName": "prueba5",
+      "amount": 0.5,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 1,
+      "status": "active",
+      "createdAt": "2026-06-14T15:52:46.791Z",
+      "description": " - prueba5",
+      "email": ""
     }
   ]
 }
