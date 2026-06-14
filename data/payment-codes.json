@@ -76,6 +76,17 @@
       "createdAt": "2026-06-14T10:06:40.720Z",
       "description": " - prueba2",
       "email": ""
+    },
+    {
+      "code": "PV-PRUEBA-I2G9E",
+      "clientName": "prueba3",
+      "amount": 0.5,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 1,
+      "status": "pending",
+      "createdAt": "2026-06-14T10:11:56.437Z",
+      "description": " - prueba3",
+      "email": ""
     }
   ]
 }
