@@ -207,7 +207,7 @@ export default function Payment() {
                 <div className="payment-help">
                   <p>¿No tienes un código?</p>
                   <a
-                    href="https://www.instagram.com/direct/new/?username=_pagevolt_"
+                    href="https://ig.me/m/_pagevolt_"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="payment-help-link"
