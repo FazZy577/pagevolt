@@ -43,6 +43,17 @@
       "createdAt": "2026-06-14T09:45:04.810Z",
       "description": " - fazz",
       "email": ""
+    },
+    {
+      "code": "PV-FAZZZ-5Z34W",
+      "clientName": "fazzz",
+      "amount": 0.5,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 1,
+      "status": "pending",
+      "createdAt": "2026-06-14T09:53:05.205Z",
+      "description": " - fazzz",
+      "email": ""
     }
   ]
 }
