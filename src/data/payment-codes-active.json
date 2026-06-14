@@ -1,0 +1,26 @@
+{
+  "codes": [
+    {
+      "code": "PV-DEMO-12345",
+      "clientName": "Café Demo",
+      "amount": 49.5,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 99,
+      "status": "active",
+      "createdAt": "2026-06-13T19:19:32.544Z",
+      "description": "Web Esencial - Café Demo",
+      "email": "demo@cafe.com"
+    },
+    {
+      "code": "PV-BARDEL-6JHO0",
+      "clientName": "Bar de l'Avia",
+      "amount": 90,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 180,
+      "status": "active",
+      "createdAt": "2026-06-13T22:22:49.583Z",
+      "description": "web normal - Bar de l'Avia",
+      "email": "popelvlad6@gmail.com"
+    }
+  ]
+}

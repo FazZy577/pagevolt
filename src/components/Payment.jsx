@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import Navbar from './Navbar';
+import paymentCodesData from '../data/payment-codes-active.json';
 import './Payment.css';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
@@ -98,21 +99,44 @@ export default function Payment() {
     setError('');
 
     try {
-      const response = await fetch('/.netlify/functions/validate-code', {
+      // Validar código en el frontend
+      const paymentCode = paymentCodesData.codes.find(
+        c => c.code === code.trim().toUpperCase() && c.status === 'active'
+      );
+
+      if (!paymentCode) {
+        setError('Código no válido o ya utilizado');
+        setLoading(false);
+        return;
+      }
+
+      // Crear PaymentIntent en el backend
+      const response = await fetch('/.netlify/functions/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: code.trim() })
+        body: JSON.stringify({
+          amount: paymentCode.amount,
+          code: paymentCode.code,
+          clientName: paymentCode.clientName,
+          description: paymentCode.description,
+          email: paymentCode.email
+        })
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || 'Código no válido');
+        setError(data.error || 'Error al procesar');
         setLoading(false);
         return;
       }
 
-      setPaymentData(data.paymentData);
+      setPaymentData({
+        clientName: paymentCode.clientName,
+        amount: paymentCode.amount,
+        paymentType: paymentCode.paymentType,
+        description: paymentCode.description
+      });
       setClientSecret(data.clientSecret);
       setStep('payment');
     } catch (err) {

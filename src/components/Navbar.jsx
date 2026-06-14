@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './Navbar.css';
 
@@ -22,9 +23,9 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="navbar-container">
-        <a href="#" className="navbar-logo">
+        <Link to="/" className="navbar-logo">
           Page<span>Volt</span>
-        </a>
+        </Link>
 
         <ul className="navbar-menu">
           <li><a href="#servicios">Servicios</a></li>

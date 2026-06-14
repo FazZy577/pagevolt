@@ -1,82 +1,156 @@
+import { useEffect, useRef, useState } from 'react';
 import './HeroParticles.css';
 
-// Función para generar posiciones aleatorias
-const getRandomPosition = (index, seed) => {
-  const x = (index * 37 + seed * 13) % 100;
-  const y = (index * 53 + seed * 17) % 100;
-  return { x, y };
-};
-
 export default function HeroParticles() {
+  const canvasRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const animationFrameRef = useRef(null);
+  const particlesRef = useRef([]);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    // Configurar canvas
+    const resizeCanvas = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    };
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Crear partículas (reducido a la mitad)
+    const createParticles = () => {
+      const particles = [];
+
+      // Olas grandes (4 -> 2)
+      for (let i = 0; i < 2; i++) {
+        particles.push({
+          x: (Math.random() * width),
+          y: (Math.random() * height),
+          size: 100 + Math.random() * 50,
+          speedX: (Math.random() - 0.5) * 0.2,
+          speedY: (Math.random() - 0.5) * 0.2,
+          opacity: 0.03 + Math.random() * 0.02,
+          type: 'wave'
+        });
+      }
+
+      // Partículas grandes (8 -> 4)
+      for (let i = 0; i < 4; i++) {
+        particles.push({
+          x: (Math.random() * width),
+          y: (Math.random() * height),
+          size: 40 + Math.random() * 30,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: (Math.random() - 0.5) * 0.3,
+          opacity: 0.05 + Math.random() * 0.03,
+          type: 'large'
+        });
+      }
+
+      // Partículas medianas (12 -> 6)
+      for (let i = 0; i < 6; i++) {
+        particles.push({
+          x: (Math.random() * width),
+          y: (Math.random() * height),
+          size: 20 + Math.random() * 20,
+          speedX: (Math.random() - 0.5) * 0.4,
+          speedY: (Math.random() - 0.5) * 0.4,
+          opacity: 0.06 + Math.random() * 0.04,
+          type: 'medium'
+        });
+      }
+
+      // Partículas pequeñas (20 -> 10)
+      for (let i = 0; i < 10; i++) {
+        particles.push({
+          x: (Math.random() * width),
+          y: (Math.random() * height),
+          size: 5 + Math.random() * 10,
+          speedX: (Math.random() - 0.5) * 0.5,
+          speedY: (Math.random() - 0.5) * 0.5,
+          opacity: 0.08 + Math.random() * 0.05,
+          type: 'small'
+        });
+      }
+
+      return particles;
+    };
+
+    particlesRef.current = createParticles();
+
+    // Animación
+    const animate = () => {
+      if (!isVisible) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      ctx.clearRect(0, 0, width, height);
+
+      particlesRef.current.forEach(particle => {
+        // Actualizar posición
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+
+        // Wrap around screen
+        if (particle.x < -particle.size) particle.x = width + particle.size;
+        if (particle.x > width + particle.size) particle.x = -particle.size;
+        if (particle.y < -particle.size) particle.y = height + particle.size;
+        if (particle.y > height + particle.size) particle.y = -particle.size;
+
+        // Dibujar partícula
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(99, 102, 241, ${particle.opacity})`;
+        ctx.fill();
+      });
+
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    // IntersectionObserver para pausar cuando no es visible
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(canvas);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      observer.disconnect();
+    };
+  }, [isVisible]);
+
   return (
-    <div className="hero-particles">
-      {/* Capa 1: Olas grandes de fondo */}
-      {[...Array(4)].map((_, i) => {
-        const pos = getRandomPosition(i, 7);
-        return (
-          <div
-            key={`wave-${i}`}
-            className="particle particle-wave"
-            style={{
-              left: `${pos.x}%`,
-              top: `${pos.y}%`,
-              animationDelay: `${i * 2}s`,
-              animationDuration: `${20 + (i % 4)}s`
-            }}
-          />
-        );
-      })}
-
-      {/* Capa 2: Partículas grandes */}
-      {[...Array(8)].map((_, i) => {
-        const pos = getRandomPosition(i, 11);
-        return (
-          <div
-            key={`large-${i}`}
-            className="particle particle-large"
-            style={{
-              left: `${pos.x}%`,
-              top: `${pos.y}%`,
-              animationDelay: `${i * 0.8}s`,
-              animationDuration: `${15 + (i % 5)}s`
-            }}
-          />
-        );
-      })}
-
-      {/* Capa 3: Partículas medianas */}
-      {[...Array(12)].map((_, i) => {
-        const pos = getRandomPosition(i, 19);
-        return (
-          <div
-            key={`medium-${i}`}
-            className="particle particle-medium"
-            style={{
-              left: `${pos.x}%`,
-              top: `${pos.y}%`,
-              animationDelay: `${i * 0.5}s`,
-              animationDuration: `${12 + (i % 4)}s`
-            }}
-          />
-        );
-      })}
-
-      {/* Capa 4: Partículas pequeñas */}
-      {[...Array(20)].map((_, i) => {
-        const pos = getRandomPosition(i, 23);
-        return (
-          <div
-            key={`small-${i}`}
-            className="particle particle-small"
-            style={{
-              left: `${pos.x}%`,
-              top: `${pos.y}%`,
-              animationDelay: `${i * 0.3}s`,
-              animationDuration: `${10 + (i % 4)}s`
-            }}
-          />
-        );
-      })}
-    </div>
+    <canvas
+      ref={canvasRef}
+      className="hero-particles-canvas"
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        zIndex: 0
+      }}
+    />
   );
 }

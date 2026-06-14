@@ -205,7 +205,7 @@ async function main() {
     amount: amount,
     paymentType: isFirst ? 'Primer pago (50%)' : 'Segundo pago (50%)',
     totalProject: price,
-    status: 'pending',
+    status: 'active',
     createdAt: new Date().toISOString(),
     description: `${description} - ${clientName}`,
     email: email
@@ -218,6 +218,13 @@ async function main() {
   fs.writeFileSync(codesPath, JSON.stringify(codesData, null, 2));
   console.log('✅ Código guardado en data/payment-codes.json');
 
+  // Actualizar src/data/payment-codes-active.json (códigos activos para el frontend)
+  const activeCodesPath = path.join(__dirname, '../src/data/payment-codes-active.json');
+  const activeCodesData = JSON.parse(fs.readFileSync(activeCodesPath, 'utf8'));
+  activeCodesData.codes.push(newCode);
+  fs.writeFileSync(activeCodesPath, JSON.stringify(activeCodesData, null, 2));
+  console.log('✅ Código añadido a src/data/payment-codes-active.json');
+
   // Actualizar netlify/functions/validate-code.js con los códigos
   updateValidateCodeFunction(codesData);
   console.log('✅ Códigos actualizados en netlify/functions/validate-code.js');
@@ -225,7 +232,7 @@ async function main() {
   // Git commit y push
   console.log('\n📦 Haciendo commit y push a git...');
   try {
-    execSync('git add data/payment-codes.json netlify/functions/validate-code.js', {
+    execSync('git add data/payment-codes.json src/data/payment-codes-active.json netlify/functions/validate-code.js', {
       cwd: path.join(__dirname, '..'),
       stdio: 'inherit'
     });
