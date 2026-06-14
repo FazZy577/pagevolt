@@ -39,7 +39,10 @@ function updateValidateCodeFunction(codesData) {
 const CODES = ${JSON.stringify(codesData, null, 2)};
 
 exports.handler = async (event, context) => {
-  console.log('validate-code function called', { method: event.httpMethod });
+  console.log('=== validate-code function called ===');
+  console.log('Method:', event.httpMethod);
+  console.log('Body:', event.body);
+  console.log('Headers:', JSON.stringify(event.headers));
 
   // CORS headers
   const headers = {
@@ -49,12 +52,18 @@ exports.handler = async (event, context) => {
     'Content-Type': 'application/json'
   };
 
-  // Handle preflight
+  // Handle preflight CORS
   if (event.httpMethod === 'OPTIONS') {
-    return { statusCode: 200, headers, body: '' };
+    console.log('Handling OPTIONS preflight request');
+    return {
+      statusCode: 200,
+      headers,
+      body: ''
+    };
   }
 
   if (event.httpMethod !== 'POST') {
+    console.log('Method not allowed:', event.httpMethod);
     return {
       statusCode: 405,
       headers,
@@ -63,9 +72,12 @@ exports.handler = async (event, context) => {
   }
 
   try {
+    console.log('Parsing request body...');
     const { code } = JSON.parse(event.body);
+    console.log('Code received:', code);
 
     if (!code) {
+      console.log('Code not provided');
       return {
         statusCode: 400,
         headers,
@@ -73,7 +85,8 @@ exports.handler = async (event, context) => {
       };
     }
 
-    console.log('Available codes:', CODES.codes.length);
+    console.log('Total available codes:', CODES.codes.length);
+    console.log('Searching for code:', code.toUpperCase());
 
     // Find the code
     const paymentCode = CODES.codes.find(c => c.code === code.toUpperCase());
@@ -87,7 +100,10 @@ exports.handler = async (event, context) => {
       };
     }
 
+    console.log('Code found:', paymentCode.code, 'Status:', paymentCode.status);
+
     if (paymentCode.status === 'paid') {
+      console.log('Code already used');
       return {
         statusCode: 400,
         headers,
@@ -96,12 +112,16 @@ exports.handler = async (event, context) => {
     }
 
     if (paymentCode.status === 'cancelled') {
+      console.log('Code cancelled');
       return {
         statusCode: 400,
         headers,
         body: JSON.stringify({ error: 'Este código ha sido cancelado' })
       };
     }
+
+    console.log('Creating Stripe PaymentIntent...');
+    console.log('Amount:', paymentCode.amount, 'Email:', paymentCode.email);
 
     // Create Stripe PaymentIntent
     const paymentIntent = await stripe.paymentIntents.create({
@@ -112,7 +132,7 @@ exports.handler = async (event, context) => {
         clientName: paymentCode.clientName,
         description: paymentCode.description
       },
-      receipt_email: paymentCode.email,
+      receipt_email: paymentCode.email || undefined,
       description: \`\${paymentCode.description} - \${paymentCode.paymentType}\`
     });
 
@@ -132,11 +152,18 @@ exports.handler = async (event, context) => {
       })
     };
   } catch (error) {
-    console.error('Error:', error);
+    console.error('=== ERROR COMPLETO ===');
+    console.error('Message:', error.message);
+    console.error('Stack:', error.stack);
+    console.error('Error object:', JSON.stringify(error, null, 2));
+
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: 'Error al procesar la solicitud' })
+      body: JSON.stringify({
+        error: 'Error al procesar la solicitud',
+        details: error.message
+      })
     };
   }
 };
