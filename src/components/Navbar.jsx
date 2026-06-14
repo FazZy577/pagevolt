@@ -100,17 +100,17 @@ export default function Navbar() {
           ✕
         </button>
 
-        <div className="navbar-mobile-logo">
+        <Link to="/" onClick={() => setMobileMenuOpen(false)} className="navbar-mobile-logo">
           Page<span>Volt</span>
-        </div>
+        </Link>
 
         <nav className="navbar-mobile-links">
-          <a href="#servicios" onClick={() => setMobileMenuOpen(false)}>Servicios</a>
-          <a href="#proceso" onClick={() => setMobileMenuOpen(false)}>Proceso</a>
-          <a href="#precios" onClick={() => setMobileMenuOpen(false)}>Precios</a>
-          <a href="#faq" onClick={() => setMobileMenuOpen(false)}>FAQ</a>
+          <a href="#servicios" onClick={() => { setMobileMenuOpen(false); window.location.href = '/#servicios'; }}>Servicios</a>
+          <a href="#proceso" onClick={() => { setMobileMenuOpen(false); window.location.href = '/#proceso'; }}>Proceso</a>
+          <a href="#precios" onClick={() => { setMobileMenuOpen(false); window.location.href = '/#precios'; }}>Precios</a>
+          <a href="#faq" onClick={() => { setMobileMenuOpen(false); window.location.href = '/#faq'; }}>FAQ</a>
           <Link to="/pago" onClick={() => setMobileMenuOpen(false)}>Pago</Link>
-          <a href="#contacto" onClick={() => setMobileMenuOpen(false)}>Contactar</a>
+          <a href="#contacto" onClick={() => { setMobileMenuOpen(false); window.location.href = '/#contacto'; }}>Contactar</a>
         </nav>
 
         <a
