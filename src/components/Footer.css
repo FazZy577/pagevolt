@@ -76,8 +76,21 @@
     align-items: center;
   }
 
-  .footer-nav {
-    flex-direction: column;
+  .footer-nav-desktop {
+    display: none;
+  }
+
+  .footer-nav-mobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media (min-width: 769px) {
+  .footer-nav-mobile {
+    display: none;
   }
 }

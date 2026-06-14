@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Payment from './components/Payment';
 import PaymentSuccess from './components/PaymentSuccess';
 import Admin from './components/Admin';
+import Privacidad from './pages/Privacidad';
+import Terminos from './pages/Terminos';
 import CustomCursor from './components/CustomCursor';
 import './styles/globals.css';
 import './styles/animations.css';
@@ -39,6 +41,8 @@ function App() {
         <Route path="/pago" element={<Payment />} />
         <Route path="/pago/confirmacion" element={<PaymentSuccess />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/privacidad" element={<Privacidad />} />
+        <Route path="/terminos" element={<Terminos />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 export default function Footer() {
@@ -13,11 +14,15 @@ export default function Footer() {
           </p>
         </div>
 
-        <nav className="footer-nav">
+        <nav className="footer-nav footer-nav-desktop">
           <a href="#servicios">Servicios</a>
-          <a href="#demos">Demos</a>
           <a href="#precios">Precios</a>
           <a href="#contacto">Contacto</a>
+        </nav>
+
+        <nav className="footer-nav footer-nav-mobile">
+          <Link to="/privacidad">Política de Privacidad</Link>
+          <Link to="/terminos">Términos y Condiciones</Link>
         </nav>
       </div>
     </footer>
