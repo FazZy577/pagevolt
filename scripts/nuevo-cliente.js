@@ -30,6 +30,121 @@ function generateCode(clientName) {
   return `${prefix}-${cleanName}-${random}`;
 }
 
+function updateValidateCodeFunction(codesData) {
+  const validateCodePath = path.join(__dirname, '../netlify/functions/validate-code.js');
+
+  const functionContent = `const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+// Códigos de pago - Actualizados automáticamente por npm run nuevo-cliente
+const CODES = ${JSON.stringify(codesData, null, 2)};
+
+exports.handler = async (event, context) => {
+  console.log('validate-code function called', { method: event.httpMethod });
+
+  // CORS headers
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Content-Type': 'application/json'
+  };
+
+  // Handle preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 200, headers, body: '' };
+  }
+
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      headers,
+      body: JSON.stringify({ error: 'Method not allowed' })
+    };
+  }
+
+  try {
+    const { code } = JSON.parse(event.body);
+
+    if (!code) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Código requerido' })
+      };
+    }
+
+    console.log('Available codes:', CODES.codes.length);
+
+    // Find the code
+    const paymentCode = CODES.codes.find(c => c.code === code.toUpperCase());
+
+    if (!paymentCode) {
+      console.log('Code not found:', code);
+      return {
+        statusCode: 404,
+        headers,
+        body: JSON.stringify({ error: 'Código no válido' })
+      };
+    }
+
+    if (paymentCode.status === 'paid') {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Este código ya ha sido utilizado' })
+      };
+    }
+
+    if (paymentCode.status === 'cancelled') {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Este código ha sido cancelado' })
+      };
+    }
+
+    // Create Stripe PaymentIntent
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(paymentCode.amount * 100), // Convert to cents
+      currency: 'eur',
+      metadata: {
+        code: paymentCode.code,
+        clientName: paymentCode.clientName,
+        description: paymentCode.description
+      },
+      receipt_email: paymentCode.email,
+      description: \`\${paymentCode.description} - \${paymentCode.paymentType}\`
+    });
+
+    console.log('PaymentIntent created successfully:', paymentIntent.id);
+
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({
+        clientSecret: paymentIntent.client_secret,
+        paymentData: {
+          clientName: paymentCode.clientName,
+          amount: paymentCode.amount,
+          paymentType: paymentCode.paymentType,
+          description: paymentCode.description
+        }
+      })
+    };
+  } catch (error) {
+    console.error('Error:', error);
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({ error: 'Error al procesar la solicitud' })
+    };
+  }
+};
+`;
+
+  fs.writeFileSync(validateCodePath, functionContent);
+}
+
 async function main() {
   console.log('\n🚀 Generador Automatizado de Códigos de Pago - PageVolt\n');
 
@@ -76,21 +191,14 @@ async function main() {
   fs.writeFileSync(codesPath, JSON.stringify(codesData, null, 2));
   console.log('✅ Código guardado en data/payment-codes.json');
 
-  // Actualizar netlify/functions/codes-data.js
-  const codesDataJsPath = path.join(__dirname, '../netlify/functions/codes-data.js');
-  const codesDataJsContent = `// Códigos de pago para PageVolt
-// Este archivo se actualiza automáticamente con npm run nuevo-cliente
-// No editar manualmente
-
-export const codesData = ${JSON.stringify(codesData, null, 2)};
-`;
-  fs.writeFileSync(codesDataJsPath, codesDataJsContent);
-  console.log('✅ Códigos actualizados en netlify/functions/codes-data.js');
+  // Actualizar netlify/functions/validate-code.js con los códigos
+  updateValidateCodeFunction(codesData);
+  console.log('✅ Códigos actualizados en netlify/functions/validate-code.js');
 
   // Git commit y push
   console.log('\n📦 Haciendo commit y push a git...');
   try {
-    execSync('git add data/payment-codes.json netlify/functions/codes-data.js', {
+    execSync('git add data/payment-codes.json netlify/functions/validate-code.js', {
       cwd: path.join(__dirname, '..'),
       stdio: 'inherit'
     });

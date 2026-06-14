@@ -1,5 +1,76 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const { codesData } = require('./codes-data.js');
+
+// Códigos de pago - Actualizados automáticamente por npm run nuevo-cliente
+const CODES = {
+  "codes": [
+    {
+      "code": "PV-DEMO-12345",
+      "clientName": "Café Demo",
+      "amount": 49.5,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 99,
+      "status": "pending",
+      "createdAt": "2026-06-13T19:19:32.544Z",
+      "description": "Web Esencial - Café Demo",
+      "email": "demo@cafe.com"
+    },
+    {
+      "code": "PV-BARDEL-6JHO0",
+      "clientName": "Bar de l'Avia",
+      "amount": 90,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 180,
+      "status": "pending",
+      "createdAt": "2026-06-13T22:22:49.583Z",
+      "description": "web normal - Bar de l'Avia",
+      "email": "popelvlad6@gmail.com"
+    },
+    {
+      "code": "PV-PANET-API1D",
+      "clientName": "Panet",
+      "amount": 0,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 0,
+      "status": "pending",
+      "createdAt": "2026-06-13T23:06:54.042Z",
+      "description": "Prueba - Panet",
+      "email": "Vlad577@hotmail.com"
+    },
+    {
+      "code": "PV-FAZZ-KCID6",
+      "clientName": "fazz",
+      "amount": 0.5,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 1,
+      "status": "pending",
+      "createdAt": "2026-06-14T09:45:04.810Z",
+      "description": " - fazz",
+      "email": ""
+    },
+    {
+      "code": "PV-FAZZZ-5Z34W",
+      "clientName": "fazzz",
+      "amount": 0.5,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 1,
+      "status": "pending",
+      "createdAt": "2026-06-14T09:53:05.205Z",
+      "description": " - fazzz",
+      "email": ""
+    },
+    {
+      "code": "PV-PRUEBA-LACPI",
+      "clientName": "prueba1",
+      "amount": 0.5,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 1,
+      "status": "pending",
+      "createdAt": "2026-06-14T10:00:51.799Z",
+      "description": " - prueba1",
+      "email": ""
+    }
+  ]
+};
 
 exports.handler = async (event, context) => {
   console.log('validate-code function called', { method: event.httpMethod });
@@ -36,10 +107,10 @@ exports.handler = async (event, context) => {
       };
     }
 
-    console.log('Available codes:', codesData.codes.length);
+    console.log('Available codes:', CODES.codes.length);
 
     // Find the code
-    const paymentCode = codesData.codes.find(c => c.code === code.toUpperCase());
+    const paymentCode = CODES.codes.find(c => c.code === code.toUpperCase());
 
     if (!paymentCode) {
       console.log('Code not found:', code);
