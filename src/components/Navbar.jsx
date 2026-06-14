@@ -71,7 +71,26 @@ export default function Navbar() {
       ></div>
 
       {/* Sidebar */}
-      <div className={`navbar-mobile-sidebar ${mobileMenuOpen ? 'open' : ''}`}>
+      <div
+        className={`navbar-mobile-sidebar ${mobileMenuOpen ? 'open' : ''}`}
+        style={{
+          background: '#0f0f0f',
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          width: '75%',
+          maxWidth: '320px',
+          zIndex: 200,
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '2rem 1.5rem',
+          transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 0.3s ease',
+          boxShadow: '-4px 0 24px rgba(0,0,0,0.5)',
+          overflowY: 'auto'
+        }}
+      >
         <button
           className="navbar-mobile-close"
           onClick={() => setMobileMenuOpen(false)}
