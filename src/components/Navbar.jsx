@@ -81,6 +81,7 @@ export default function Navbar() {
           bottom: 0,
           width: '75%',
           maxWidth: '320px',
+          height: '100vh',
           zIndex: 200,
           display: 'flex',
           flexDirection: 'column',
