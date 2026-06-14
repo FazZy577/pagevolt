@@ -54,6 +54,17 @@
       "createdAt": "2026-06-14T09:53:05.205Z",
       "description": " - fazzz",
       "email": ""
+    },
+    {
+      "code": "PV-PRUEBA-LACPI",
+      "clientName": "prueba1",
+      "amount": 0.5,
+      "paymentType": "Primer pago (50%)",
+      "totalProject": 1,
+      "status": "pending",
+      "createdAt": "2026-06-14T10:00:51.799Z",
+      "description": " - prueba1",
+      "email": ""
     }
   ]
 }
