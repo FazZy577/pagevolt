@@ -16,6 +16,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <motion.nav
       className={`navbar ${scrolled ? 'scrolled' : ''}`}
@@ -24,6 +35,8 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="navbar-container">
+        <div className="navbar-spacer"></div>
+
         <Link to="/" className="navbar-logo">
           Page<span>Volt</span>
         </Link>
@@ -46,16 +59,45 @@ export default function Navbar() {
           <span></span>
         </button>
 
-        <div className={`navbar-mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+        <a href="#contacto" className="navbar-cta btn btn-primary">
+          Empezar
+        </a>
+      </div>
+
+      {/* Overlay */}
+      <div
+        className={`navbar-mobile-overlay ${mobileMenuOpen ? 'open' : ''}`}
+        onClick={() => setMobileMenuOpen(false)}
+      ></div>
+
+      {/* Sidebar */}
+      <div className={`navbar-mobile-sidebar ${mobileMenuOpen ? 'open' : ''}`}>
+        <button
+          className="navbar-mobile-close"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-label="Close menu"
+        >
+          ✕
+        </button>
+
+        <div className="navbar-mobile-logo">
+          Page<span>Volt</span>
+        </div>
+
+        <nav className="navbar-mobile-links">
           <a href="#servicios" onClick={() => setMobileMenuOpen(false)}>Servicios</a>
           <a href="#proceso" onClick={() => setMobileMenuOpen(false)}>Proceso</a>
           <a href="#precios" onClick={() => setMobileMenuOpen(false)}>Precios</a>
           <a href="#faq" onClick={() => setMobileMenuOpen(false)}>FAQ</a>
           <Link to="/pago" onClick={() => setMobileMenuOpen(false)}>Pago</Link>
-          <a href="#contacto" onClick={() => setMobileMenuOpen(false)}>Contacto</a>
-        </div>
+          <a href="#contacto" onClick={() => setMobileMenuOpen(false)}>Contactar</a>
+        </nav>
 
-        <a href="#contacto" className="navbar-cta btn btn-primary">
+        <a
+          href="#contacto"
+          className="navbar-mobile-cta btn btn-primary"
+          onClick={() => setMobileMenuOpen(false)}
+        >
           Empezar
         </a>
       </div>

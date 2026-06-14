@@ -18,6 +18,8 @@ export default function Footer() {
           <a href="#servicios">Servicios</a>
           <a href="#precios">Precios</a>
           <a href="#contacto">Contacto</a>
+          <Link to="/privacidad">Privacidad</Link>
+          <Link to="/terminos">Términos</Link>
         </nav>
 
         <nav className="footer-nav footer-nav-mobile">
