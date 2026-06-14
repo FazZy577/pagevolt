@@ -10,13 +10,9 @@ import path from 'path';
 import readline from 'readline';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-import dotenv from 'dotenv';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// Cargar variables de entorno
-dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -34,123 +30,8 @@ function generateCode(clientName) {
   return `${prefix}-${cleanName}-${random}`;
 }
 
-async function updateNetlifyEnvVar(siteId, token, key, value) {
-  console.log('\n📡 Actualizando variable de entorno en Netlify...');
-
-  const accountId = '69da09ed205345073b54beed';
-
-  try {
-    // Intentar PATCH primero (actualizar variable existente)
-    const patchResponse = await fetch(
-      `https://api.netlify.com/api/v1/accounts/${accountId}/env/${key}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          values: [
-            {
-              value: value,
-              context: 'all'
-            }
-          ]
-        })
-      }
-    );
-
-    let success = false;
-
-    if (patchResponse.status === 404) {
-      // Variable no existe, crearla con POST
-      console.log('Variable no existe, creándola...');
-
-      const postResponse = await fetch(
-        `https://api.netlify.com/api/v1/accounts/${accountId}/env`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify([
-            {
-              key: key,
-              values: [
-                {
-                  value: value,
-                  context: 'all'
-                }
-              ]
-            }
-          ])
-        }
-      );
-
-      if (!postResponse.ok) {
-        const errorData = await postResponse.json();
-        console.error('Error al crear variable:', errorData);
-        throw new Error(`Error al crear variable: ${postResponse.status} ${postResponse.statusText}`);
-      }
-
-      success = true;
-      console.log('✅ Variable PAYMENT_CODES creada en Netlify');
-    } else if (patchResponse.ok) {
-      success = true;
-      console.log('✅ Variable PAYMENT_CODES actualizada en Netlify');
-    } else {
-      const errorData = await patchResponse.json();
-      console.error('Error response:', errorData);
-      throw new Error(`Error al actualizar variable: ${patchResponse.status} ${patchResponse.statusText}`);
-    }
-
-    if (success) {
-      // Triggerar un nuevo deploy para aplicar los cambios
-      console.log('\n🚀 Triggerando nuevo deploy en Netlify...');
-      const deployResponse = await fetch(
-        `https://api.netlify.com/api/v1/sites/${siteId}/builds`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify({
-            clear_cache: false
-          })
-        }
-      );
-
-      if (!deployResponse.ok) {
-        console.log('⚠️  No se pudo triggerar el deploy automáticamente');
-        console.log('   Netlify redesplegará en el próximo git push');
-      } else {
-        console.log('✅ Deploy triggerando en Netlify');
-        console.log('   El nuevo código estará disponible en 1-2 minutos');
-      }
-    }
-
-    return success;
-  } catch (error) {
-    console.error('❌ Error al actualizar Netlify:', error.message);
-    return false;
-  }
-}
-
 async function main() {
   console.log('\n🚀 Generador Automatizado de Códigos de Pago - PageVolt\n');
-
-  // Verificar variables de entorno
-  const netlifyToken = process.env.NETLIFY_TOKEN;
-  const netlifySiteId = process.env.NETLIFY_SITE_ID;
-
-  if (!netlifyToken || !netlifySiteId) {
-    console.log('❌ Error: Faltan credenciales de Netlify\n');
-    console.log('Ejecuta primero: npm run setup-local\n');
-    rl.close();
-    process.exit(1);
-  }
 
   // Recoger datos del cliente
   const clientName = await question('Nombre del negocio: ');
@@ -188,39 +69,40 @@ async function main() {
     email: email
   };
 
-  // Guardar en archivo local
+  // Guardar en archivo local data/payment-codes.json
   const codesPath = path.join(__dirname, '../data/payment-codes.json');
   const codesData = JSON.parse(fs.readFileSync(codesPath, 'utf8'));
   codesData.codes.push(newCode);
   fs.writeFileSync(codesPath, JSON.stringify(codesData, null, 2));
   console.log('✅ Código guardado en data/payment-codes.json');
 
-  // Actualizar Netlify
-  const jsonOneLine = JSON.stringify(codesData);
-  const netlifyUpdated = await updateNetlifyEnvVar(
-    netlifySiteId,
-    netlifyToken,
-    'PAYMENT_CODES',
-    jsonOneLine
-  );
+  // Actualizar netlify/functions/codes-data.js
+  const codesDataJsPath = path.join(__dirname, '../netlify/functions/codes-data.js');
+  const codesDataJsContent = `// Códigos de pago para PageVolt
+// Este archivo se actualiza automáticamente con npm run nuevo-cliente
+// No editar manualmente
 
-  if (!netlifyUpdated) {
-    console.log('\n⚠️  No se pudo actualizar Netlify automáticamente.');
-    console.log('Deberás actualizar manualmente la variable PAYMENT_CODES.\n');
-  }
+export const codesData = ${JSON.stringify(codesData, null, 2)};
+`;
+  fs.writeFileSync(codesDataJsPath, codesDataJsContent);
+  console.log('✅ Códigos actualizados en netlify/functions/codes-data.js');
 
   // Git commit y push
   console.log('\n📦 Haciendo commit y push a git...');
   try {
-    execSync('git add data/payment-codes.json', { cwd: path.join(__dirname, '..'), stdio: 'inherit' });
+    execSync('git add data/payment-codes.json netlify/functions/codes-data.js', {
+      cwd: path.join(__dirname, '..'),
+      stdio: 'inherit'
+    });
     execSync(`git commit -m "Nuevo código de pago: ${code} - ${clientName}"`, {
       cwd: path.join(__dirname, '..'),
       stdio: 'inherit'
     });
     execSync('git push', { cwd: path.join(__dirname, '..'), stdio: 'inherit' });
     console.log('✅ Cambios subidos a git');
+    console.log('🚀 Netlify desplegará automáticamente en 1-2 minutos');
   } catch (error) {
-    console.log('⚠️  Error con git (puede que no haya cambios o no esté configurado)');
+    console.log('⚠️  Error con git:', error.message);
   }
 
   // Mostrar resultado final
@@ -230,7 +112,7 @@ async function main() {
   console.log(`\n✅ Código para el cliente: ${code}`);
   console.log(`💰 Cantidad: €${amount.toFixed(2)} (${isFirst ? 'Primer' : 'Segundo'} pago - 50%)`);
   console.log(`📧 Email: ${email}`);
-  console.log('\nYa está activo en la web, puedes enviárselo al cliente ahora.');
+  console.log('\nEl código estará activo en 1-2 minutos después del deploy.');
   console.log('\nMensaje sugerido para Instagram:');
   console.log('─'.repeat(80));
   console.log(`¡Hola! 👋

@@ -1,4 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const { codesData } = require('./codes-data.js');
 
 exports.handler = async (event, context) => {
   console.log('validate-code function called', { method: event.httpMethod });
@@ -35,29 +36,7 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Read payment codes from environment variable
-    const paymentCodesEnv = process.env.PAYMENT_CODES;
-
-    if (!paymentCodesEnv) {
-      console.error('PAYMENT_CODES environment variable not found');
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({ error: 'Configuración de códigos de pago no encontrada. Contacta con el administrador.' })
-      };
-    }
-
-    let codesData;
-    try {
-      codesData = JSON.parse(paymentCodesEnv);
-    } catch (parseError) {
-      console.error('Error parsing PAYMENT_CODES:', parseError);
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({ error: 'Error en configuración de códigos. Contacta con el administrador.' })
-      };
-    }
+    console.log('Available codes:', codesData.codes.length);
 
     // Find the code
     const paymentCode = codesData.codes.find(c => c.code === code.toUpperCase());
