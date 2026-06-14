@@ -35,24 +35,15 @@ export default function Contact() {
 
           <div className="contact-actions">
             <a
-              href="https://instagram.com/pagevolt"
+              href="https://www.instagram.com/direct/new/?username=_pagevolt_"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary contact-cta"
             >
-              Escribirme por Instagram
+              Contactar
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </a>
-
-            <a
-              href="https://wa.me/34XXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-secondary"
-            >
-              WhatsApp
             </a>
           </div>
 
