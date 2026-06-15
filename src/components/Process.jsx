@@ -11,7 +11,7 @@ export default function Process() {
     {
       number: "01",
       title: "Me cuentas tu negocio",
-      description: "Un mensaje por Instagram o WhatsApp. Me dices qué tienes y qué necesitas. Sin formularios."
+      description: "Un mensaje por Instagram. Me dices qué tienes y qué necesitas. Sin formularios."
     },
     {
       number: "02",
@@ -20,13 +20,18 @@ export default function Process() {
     },
     {
       number: "03",
-      title: "Diseño y revisiones",
-      description: "Creo tu web y te la enseño. Ajustamos hasta que estés 100% conforme. Sin límite de cambios."
+      title: "Primer pago (50%)",
+      description: "Realizas el 50% del pago acordado para comenzar el diseño. Proceso 100% seguro vía Stripe."
     },
     {
       number: "04",
-      title: "Online y funcionando",
-      description: "Publicamos tu web. Si incluye reservas, las pruebas conmigo antes de que llegue el primer cliente."
+      title: "Diseño y revisiones",
+      description: "En 48h tienes un diseño inicial. Tienes hasta 3 revisiones incluidas para ajustar todo."
+    },
+    {
+      number: "05",
+      title: "Aprobación y entrega",
+      description: "Cuando te gusta, pagas el 50% restante y tu web se publica. ¡Listo para recibir clientes!"
     }
   ];
 
@@ -40,7 +45,7 @@ export default function Process() {
           transition={{ duration: 0.6 }}
         >
           <span className="section-label">El proceso</span>
-          <h2 className="section-title">De cero a online<br />en 4 pasos</h2>
+          <h2 className="section-title">De cero a online<br />en 5 pasos</h2>
           <p className="section-subtitle">
             Sin reuniones eternas ni tecnicismos. Un proceso claro para que tú te centres en tu negocio.
           </p>
