@@ -7,6 +7,25 @@ export default function Problem() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const problems = [
+    {
+      title: "Sin presencia online",
+      description: "Si no apareces en Google, no existes para el 80% de tus clientes potenciales"
+    },
+    {
+      title: "Primera impresión horrible",
+      description: "Una web anticuada transmite desconfianza y hace que el cliente se vaya a la competencia"
+    },
+    {
+      title: "Sin reservas automáticas",
+      description: "Pierdes clientes fuera de tu horario porque no tienen forma de contactarte fácilmente"
+    },
+    {
+      title: "Diseño no adaptado a móvil",
+      description: "El 70% de búsquedas son desde el móvil. Si tu web no se ve bien en móvil, pierdes esos clientes"
+    }
+  ];
+
   return (
     <section className="problem section" ref={ref}>
       <div className="problem-marquee">
@@ -42,33 +61,43 @@ export default function Problem() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="problem-title">
-            Cada día sin una web profesional,<br />
-            <span className="problem-title-accent">pierdes clientes</span>
+            La mayoría de negocios locales<br />
+            <span className="problem-title-accent">pierden clientes cada día</span>
           </h2>
           <p className="problem-text">
-            El 87% de las personas busca online antes de visitar un negocio local.
-            Si no apareces, no existes.
+            Tener una web mala es peor que no tenerla. Los clientes juzgan tu negocio en 3 segundos.
           </p>
         </motion.div>
 
         <motion.div
-          className="problem-stats"
+          className="problem-cards"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="problem-stat-card">
-            <div className="problem-stat-number">87%</div>
-            <p className="problem-stat-text">busca online antes de visitar</p>
-          </div>
-          <div className="problem-stat-card">
-            <div className="problem-stat-number">75%</div>
-            <p className="problem-stat-text">juzga tu credibilidad por tu web</p>
-          </div>
-          <div className="problem-stat-card">
-            <div className="problem-stat-number">60%</div>
-            <p className="problem-stat-text">no contacta si la web es mala</p>
-          </div>
+          {problems.map((problem, index) => (
+            <motion.div
+              key={index}
+              className="problem-card"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+            >
+              <h3 className="problem-card-title">{problem.title}</h3>
+              <p className="problem-card-text">{problem.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="problem-final"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <p className="problem-final-text">
+            Tu web debería traerte clientes, no espantarlos.
+          </p>
         </motion.div>
       </div>
     </section>
