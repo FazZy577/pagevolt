@@ -260,7 +260,7 @@ async function main() {
   console.log(`¡Hola! 👋
 
 Para procesar el pago de tu web (€${amount.toFixed(2)}):
-🔗 https://cosmic-souffle-1bb721.netlify.app/pago
+🔗 https://silly-cascaron-2484bf.netlify.app/pago
 
 Tu código: ${code}
 
