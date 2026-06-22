@@ -102,12 +102,18 @@
   line-height: 1;
 }
 
-.footer-contact-item svg {
-  flex-shrink: 0;
+.footer-contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 16px;
   height: 16px;
-  display: block;
-  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.footer-contact-icon svg {
+  width: 16px;
+  height: 16px;
 }
 
 .footer-cta-button {
