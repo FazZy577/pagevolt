@@ -101,7 +101,7 @@ export default function Terminos() {
             </ul>
             <p>
               Para solicitar permisos especiales de uso, modificación o redistribución, contacta
-              con nosotros a través de Instagram: <strong>@_pagevolt_</strong>
+              con nosotros a través de Instagram: <strong>@Voltix</strong>
             </p>
           </section>
 
@@ -206,7 +206,7 @@ export default function Terminos() {
               Para cualquier consulta sobre estos términos y condiciones:
             </p>
             <ul>
-              <li>Instagram: <a href="https://ig.me/m/_pagevolt_" target="_blank" rel="noopener noreferrer">@_pagevolt_</a></li>
+              <li>Instagram: <a href="https://ig.me/m/voltix" target="_blank" rel="noopener noreferrer">@Voltix</a></li>
               <li>Sitio web: pagevolt.es</li>
             </ul>
           </section>

@@ -207,7 +207,7 @@ export default function Payment() {
                 <div className="payment-help">
                   <p>¿No tienes un código?</p>
                   <a
-                    href="https://ig.me/m/_pagevolt_"
+                    href="https://ig.me/m/voltix"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="payment-help-link"

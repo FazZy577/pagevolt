@@ -107,7 +107,7 @@ export default function Privacidad() {
             </ul>
             <p>
               Para ejercer cualquiera de estos derechos, contacta con nosotros a través de
-              Instagram: <strong>@_pagevolt_</strong>
+              Instagram: <strong>@Voltix</strong>
             </p>
           </section>
 
@@ -127,7 +127,7 @@ export default function Privacidad() {
               tu información personal, contáctanos:
             </p>
             <ul>
-              <li>Instagram: <a href="https://ig.me/m/_pagevolt_" target="_blank" rel="noopener noreferrer">@_pagevolt_</a></li>
+              <li>Instagram: <a href="https://ig.me/m/voltix" target="_blank" rel="noopener noreferrer">@Voltix</a></li>
               <li>Sitio web: pagevolt.es</li>
             </ul>
           </section>
