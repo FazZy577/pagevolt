@@ -92,6 +92,20 @@
   text-decoration: none;
 }
 
+.footer-links a.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.footer-links a.footer-contact-item svg {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 1px;
+}
+
 .footer-links a:hover {
   color: var(--color-text);
 }
@@ -105,9 +119,11 @@
 
 .footer-contact-item svg {
   flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  display: block;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  position: relative;
+  top: 1px;
 }
 
 .footer-contact-item span {
