@@ -46,7 +46,7 @@ export default function Navbar() {
         </button>
 
         <Link to="/" className="navbar-logo">
-          Page<span>Volt</span>
+          Volt<span>ix</span>
         </Link>
 
         <ul className="navbar-menu">
@@ -101,7 +101,7 @@ export default function Navbar() {
         </button>
 
         <Link to="/" onClick={() => setMobileMenuOpen(false)} className="navbar-mobile-logo">
-          Page<span>Volt</span>
+          Volt<span>ix</span>
         </Link>
 
         <nav className="navbar-mobile-links">

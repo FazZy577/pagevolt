@@ -113,7 +113,7 @@ export default function Admin() {
             transition={{ duration: 0.5 }}
           >
             <div className="admin-logo">
-              <h1>Page<span>Volt</span></h1>
+              <h1>Volt<span>ix</span></h1>
               <p>Panel de administración</p>
             </div>
 

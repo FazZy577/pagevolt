@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Script para generar códigos de pago para PageVolt
+ * Script para generar códigos de pago para Voltix
  * Uso: node scripts/generate-code.js
  */
 
@@ -30,7 +30,7 @@ function generateCode(clientName) {
 }
 
 async function main() {
-  console.log('\n🚀 Generador de Códigos de Pago - PageVolt\n');
+  console.log('\n🚀 Generador de Códigos de Pago - Voltix\n');
 
   const clientName = await question('Nombre del negocio: ');
   const email = await question('Email del cliente: ');

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Script de configuración inicial para PageVolt
+ * Script de configuración inicial para Voltix
  * Configura las variables de entorno necesarias para el deploy automatizado
  */
 
@@ -23,7 +23,7 @@ function question(query) {
 }
 
 async function main() {
-  console.log('\n🔧 Configuración inicial de PageVolt\n');
+  console.log('\n🔧 Configuración inicial de Voltix\n');
   console.log('Este script te ayudará a configurar las credenciales de Netlify\n');
 
   console.log('━'.repeat(80));
@@ -31,7 +31,7 @@ async function main() {
   console.log('━'.repeat(80));
   console.log('\n1. Ve a: https://app.netlify.com/user/applications#personal-access-tokens');
   console.log('2. Haz clic en "New access token"');
-  console.log('3. Dale un nombre (ej: "PageVolt Deploy")');
+  console.log('3. Dale un nombre (ej: "Voltix Deploy")');
   console.log('4. Copia el token que se genera\n');
 
   const netlifyToken = await question('Pega aquí tu NETLIFY_TOKEN: ');
@@ -40,7 +40,7 @@ async function main() {
   console.log('📖 PASO 2: Obtener tu Site ID');
   console.log('━'.repeat(80));
   console.log('\n1. Ve a tu dashboard de Netlify');
-  console.log('2. Selecciona tu sitio PageVolt');
+  console.log('2. Selecciona tu sitio Voltix');
   console.log('3. Ve a Site settings → General');
   console.log('4. Busca "Site information" → "Site ID"');
   console.log('5. Copia el ID (tiene formato: 12345678-abcd-1234-abcd-123456789abc)\n');
@@ -49,7 +49,7 @@ async function main() {
 
   // Crear archivo .env
   const envPath = path.join(__dirname, '../.env');
-  const envContent = `# Variables de entorno para PageVolt
+  const envContent = `# Variables de entorno para Voltix
 # Generado el ${new Date().toISOString()}
 
 # Stripe - Obtener de https://dashboard.stripe.com/apikeys

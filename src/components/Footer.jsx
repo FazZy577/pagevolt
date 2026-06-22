@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Columna 1 - Logo y descripción */}
           <div className="footer-column">
             <Link to="/" className="footer-logo">
-              Page<span>Volt</span>
+              Volt<span>ix</span>
             </Link>
             <p className="footer-description">
               Diseño web para negocios locales. Bonito, rápido y que atrae clientes de verdad.
@@ -76,7 +76,7 @@ export default function Footer() {
 
         {/* Parte inferior */}
         <div className="footer-bottom">
-          <p className="footer-copyright">© 2026 PageVolt · Todos los derechos reservados.</p>
+          <p className="footer-copyright">© 2026 Voltix · Todos los derechos reservados.</p>
           <div className="footer-legal">
             <Link to="/privacidad">Política de Privacidad</Link>
             <Link to="/terminos">Términos y Condiciones</Link>
