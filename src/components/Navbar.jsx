@@ -45,7 +45,7 @@ export default function Navbar() {
           <span></span>
         </button>
 
-        <Link to="/" className="navbar-logo">
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="navbar-logo">
           Volt<span>ix</span>
         </Link>
 
@@ -100,7 +100,7 @@ export default function Navbar() {
           ✕
         </button>
 
-        <Link to="/" onClick={() => setMobileMenuOpen(false)} className="navbar-mobile-logo">
+        <Link to="/" onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="navbar-mobile-logo">
           Volt<span>ix</span>
         </Link>
 

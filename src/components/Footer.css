@@ -106,6 +106,8 @@
   flex-shrink: 0;
   width: 16px;
   height: 16px;
+  display: block;
+  margin-top: 1px;
 }
 
 .footer-cta-button {
