@@ -163,7 +163,7 @@ export default function Payment() {
           transition={{ duration: 0.5 }}
         >
           <div className="payment-logo">
-            <h1>Volt<span>ix</span></h1>
+            <h1>Volt<span>ic</span></h1>
           </div>
 
           {step === 'code' && (
@@ -207,7 +207,7 @@ export default function Payment() {
                 <div className="payment-help">
                   <p>¿No tienes un código?</p>
                   <a
-                    href="https://ig.me/m/voltix"
+                    href="https://ig.me/m/volt1c"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="payment-help-link"

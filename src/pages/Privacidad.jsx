@@ -20,7 +20,7 @@ export default function Privacidad() {
           <section>
             <h2>1. Información que Recopilamos</h2>
             <p>
-              En Voltix recopilamos únicamente la información necesaria para proporcionar
+              En Voltic recopilamos únicamente la información necesaria para proporcionar
               nuestros servicios de diseño web:
             </p>
             <ul>
@@ -112,7 +112,7 @@ export default function Privacidad() {
             </ul>
             <p>
               Para ejercer cualquiera de estos derechos, contacta con nosotros a través de
-              Instagram: <strong>@Voltix</strong>
+              Instagram: <strong>@Volt1c</strong>
             </p>
           </section>
 
@@ -132,7 +132,7 @@ export default function Privacidad() {
               tu información personal, contáctanos:
             </p>
             <ul>
-              <li>Instagram: <a href="https://ig.me/m/voltix" target="_blank" rel="noopener noreferrer">@Voltix</a></li>
+              <li>Instagram: <a href="https://ig.me/m/volt1c" target="_blank" rel="noopener noreferrer">@Volt1c</a></li>
               <li>Sitio web: pagevolt.es</li>
             </ul>
           </section>
