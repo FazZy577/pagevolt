@@ -7,6 +7,14 @@ export default function Problem() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const marqueeItems = [
+    "WEBS QUE CONVIERTEN",
+    "DISEÑO A MEDIDA",
+    "SEO OPTIMIZADO",
+    "CARGA ULTRARRÁPIDA",
+    "EXPERIENCIA PREMIUM"
+  ];
+
   const problems = [
     {
       title: "Sin presencia online",
@@ -29,39 +37,13 @@ export default function Problem() {
   return (
     <section className="problem section" ref={ref}>
       <div className="problem-marquee">
-        <div className="marquee-track">
-          <span className="marquee-item">DISEÑO WEB</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">TRABAJO EN REMOTO</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">CUALQUIER PAÍS</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">ENTREGA EN 48H</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">DISEÑO A MEDIDA</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">PAGO SEGURO</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">RESERVAS AUTOMÁTICAS</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">100% ONLINE</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">DISEÑO WEB</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">TRABAJO EN REMOTO</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">CUALQUIER PAÍS</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">ENTREGA EN 48H</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">DISEÑO A MEDIDA</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">PAGO SEGURO</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">RESERVAS AUTOMÁTICAS</span>
-          <span className="marquee-dot">•</span>
-          <span className="marquee-item">100% ONLINE</span>
-          <span className="marquee-dot">•</span>
+        <div className="slide-track">
+          {[...marqueeItems, ...marqueeItems].map((item, index) => (
+            <div key={index} className="slide">
+              <span className="marquee-item">{item}</span>
+              {index < marqueeItems.length * 2 - 1 && <span className="marquee-dot">•</span>}
+            </div>
+          ))}
         </div>
       </div>
 

@@ -13,13 +13,27 @@
   margin-bottom: 5rem;
 }
 
-.marquee-track {
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-280px * 5));
+  }
+}
+
+.slide-track {
+  animation: scroll 30s linear infinite;
   display: flex;
-  gap: 2rem;
-  white-space: nowrap;
-  animation: marquee 20s linear infinite;
-  width: max-content;
-  will-change: transform;
+  width: calc(280px * 10);
+}
+
+.slide {
+  width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .marquee-item {
@@ -33,15 +47,6 @@
 .marquee-dot {
   color: rgba(10, 10, 10, 0.4);
   font-weight: 700;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
 }
 
 .problem-content {
