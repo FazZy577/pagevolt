@@ -10,7 +10,8 @@
     "generate-code": "node scripts/generate-code.js",
     "nuevo-cliente": "node scripts/nuevo-cliente.js",
     "setup-local": "node scripts/setup-local.js",
-    "desactivar-codigo": "node scripts/desactivar-codigo.js"
+    "desactivar-codigo": "node scripts/desactivar-codigo.js",
+    "cliente": "node scripts/cliente.js"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^6.6.0",

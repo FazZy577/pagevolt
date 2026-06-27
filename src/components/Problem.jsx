@@ -54,6 +54,14 @@ export default function Problem() {
           <span className="marquee-dot">•</span>
           <span className="marquee-item">ENTREGA EN 48H</span>
           <span className="marquee-dot">•</span>
+          <span className="marquee-item">DISEÑO A MEDIDA</span>
+          <span className="marquee-dot">•</span>
+          <span className="marquee-item">PAGO SEGURO</span>
+          <span className="marquee-dot">•</span>
+          <span className="marquee-item">RESERVAS AUTOMÁTICAS</span>
+          <span className="marquee-dot">•</span>
+          <span className="marquee-item">100% ONLINE</span>
+          <span className="marquee-dot">•</span>
         </div>
       </div>
 
