@@ -114,16 +114,15 @@
   }
 
   .navbar-logo {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 50%;
-    margin-top: -0.625rem;
   }
 
   .navbar-cta {
-    display: none;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
   }
 
   .navbar-mobile-toggle {
