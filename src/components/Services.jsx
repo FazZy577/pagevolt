@@ -12,7 +12,7 @@ export default function Services() {
       number: "01",
       icon: "✦",
       title: "Desde cero",
-      description: "No tienes web todavía. Perfecto — empezamos con una hoja en blanco y construimos algo hecho exactamente para ti y tus clientes.",
+      description: "No tienes web todavía. Perfecto — empezamos con una hoja en blanco y construimos algo hecho exactamente para ti y tus clientes. Diseñamos tu presencia online desde cero: identidad visual, estructura de contenido, formularios de contacto, integración de reservas y optimización para que Google encuentre tu negocio. Ideal para restaurantes, bares, cafeterías y comercios que quieren empezar con buen pie en internet.",
       tag: "Más popular",
       tagColor: "popular"
     },
@@ -20,7 +20,7 @@ export default function Services() {
       number: "02",
       icon: "⟳",
       title: "Rediseño",
-      description: "Tu web existe pero no convence. Analizamos qué falla y lo reconstruimos con un diseño moderno que refleje la calidad de tu negocio.",
+      description: "Tu web existe pero no convence. Analizamos qué falla y lo reconstruimos con un diseño moderno que refleje la calidad de tu negocio. Actualizamos la imagen, mejoramos la velocidad de carga, adaptamos todo para móvil y añadimos funcionalidades que realmente convierten visitas en clientes. Muchos negocios locales tienen webs anticuadas que espantan clientes — nosotros lo arreglamos.",
       tag: "Rápido",
       tagColor: "fast"
     },
@@ -30,7 +30,7 @@ export default function Services() {
         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
       </svg>,
       title: "Desde Instagram",
-      description: "Tienes fotos, descripciones y clientes en Insta. Convertimos ese contenido en una web profesional sin que tengas que preparar nada.",
+      description: "Tienes fotos, descripciones y clientes en Insta. Convertimos ese contenido en una web profesional sin que tengas que preparar nada. Aprovechamos tu galería de Instagram, tus posts más exitosos y tu estilo visual para crear una web coherente con tu marca. Es la forma más rápida de tener presencia web si ya tienes un perfil activo. Perfecto para negocios que invierten tiempo en redes sociales pero aún no tienen web propia.",
       tag: "Sin esfuerzo",
       tagColor: "easy"
     }

@@ -1,3 +1,13 @@
+[[headers]]
+  for = "/branch-deploy/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/.netlify/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
 [build]
   command = "npm run build"
   publish = "dist"
@@ -5,6 +15,5 @@
 
 [[redirects]]
   from = "/*"
-  
   to = "/index.html"
   status = 200

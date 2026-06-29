@@ -18,19 +18,19 @@ export default function Problem() {
   const problems = [
     {
       title: "Sin presencia online",
-      description: "Si no apareces en Google, no existes para el 80% de tus clientes potenciales"
+      description: "Si no apareces en Google, no existes para el 80% de tus clientes potenciales. La mayoría de personas buscan negocios locales online antes de visitarlos. Sin una web profesional, pierdes esos clientes antes de que siquiera conozcan tu negocio."
     },
     {
       title: "Primera impresión horrible",
-      description: "Una web anticuada transmite desconfianza y hace que el cliente se vaya a la competencia"
+      description: "Una web anticuada transmite desconfianza y hace que el cliente se vaya a la competencia en segundos. El diseño de tu web comunica la calidad de tu servicio. Si tu web parece de hace 10 años, los clientes asumen que tu negocio también lo es."
     },
     {
       title: "Sin reservas automáticas",
-      description: "Pierdes clientes fuera de tu horario porque no tienen forma de contactarte fácilmente"
+      description: "Pierdes clientes fuera de tu horario porque no tienen forma de contactarte fácilmente. Las reservas online permiten que tus clientes agenden citas, reserven mesas o soliciten servicios las 24 horas del día, incluso cuando tu negocio está cerrado."
     },
     {
       title: "Diseño no adaptado a móvil",
-      description: "El 70% de búsquedas son desde el móvil. Si tu web no se ve bien en móvil, pierdes esos clientes"
+      description: "El 70% de búsquedas son desde el móvil. Si tu web no se ve bien en móvil, pierdes esos clientes directamente. Google penaliza webs que no funcionan en móvil, y los usuarios abandonan inmediatamente si tienen que hacer zoom para leer tu contenido."
     }
   ];
 

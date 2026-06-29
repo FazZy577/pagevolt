@@ -7,6 +7,8 @@ import PaymentSuccess from './components/PaymentSuccess';
 import Admin from './components/Admin';
 import Privacidad from './pages/Privacidad';
 import Terminos from './pages/Terminos';
+import DisenoWebRestaurantes from './pages/DisenoWebRestaurantes';
+import DisenoWebNegociosLocales from './pages/DisenoWebNegociosLocales';
 import CustomCursor from './components/CustomCursor';
 import './styles/globals.css';
 import './styles/animations.css';
@@ -43,6 +45,8 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/privacidad" element={<Privacidad />} />
         <Route path="/terminos" element={<Terminos />} />
+        <Route path="/diseno-web-restaurantes" element={<DisenoWebRestaurantes />} />
+        <Route path="/diseno-web-negocios-locales" element={<DisenoWebNegociosLocales />} />
       </Routes>
     </BrowserRouter>
   );

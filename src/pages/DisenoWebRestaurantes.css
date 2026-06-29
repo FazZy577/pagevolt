@@ -1,0 +1,124 @@
+.landing-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.landing-hero {
+  padding: 120px 0 80px;
+  background: linear-gradient(180deg, rgba(98, 0, 255, 0.05) 0%, transparent 100%);
+  text-align: center;
+}
+
+.landing-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.landing-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.landing-content {
+  padding: 60px 0 100px;
+}
+
+.landing-content article {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.landing-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 3rem 0 1.5rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.landing-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1rem;
+  color: var(--text);
+}
+
+.landing-content p {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+}
+
+.landing-content ul,
+.landing-content ol {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+}
+
+.landing-content li {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.landing-content strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.landing-cta-box {
+  background: linear-gradient(135deg, rgba(98, 0, 255, 0.1) 0%, rgba(98, 0, 255, 0.05) 100%);
+  border: 1px solid rgba(98, 0, 255, 0.2);
+  border-radius: 16px;
+  padding: 3rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.landing-cta-box h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.landing-cta-box p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .landing-hero {
+    padding: 100px 0 60px;
+  }
+
+  .landing-hero h1 {
+    font-size: 2rem;
+  }
+
+  .landing-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .landing-content {
+    padding: 40px 0 80px;
+  }
+
+  .landing-content h2 {
+    font-size: 1.75rem;
+    margin: 2.5rem 0 1rem;
+  }
+
+  .landing-content article {
+    font-size: 1rem;
+  }
+
+  .landing-cta-box {
+    padding: 2rem 1.5rem;
+  }
+}

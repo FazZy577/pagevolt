@@ -11,27 +11,27 @@ export default function Process() {
     {
       number: "01",
       title: "Me cuentas tu negocio",
-      description: "Un mensaje por Instagram. Me dices qué tienes y qué necesitas. Sin formularios."
+      description: "Un mensaje por Instagram es suficiente. Me dices qué tienes, qué necesitas, y cuál es tu objetivo con la web. Sin formularios largos ni reuniones innecesarias. Conversación directa y humana."
     },
     {
       number: "02",
       title: "Propuesta y precio",
-      description: "En 24h tienes una propuesta clara con precio cerrado. Sin sorpresas ni extras ocultos."
+      description: "En 24h tienes una propuesta clara con precio cerrado y fecha de entrega. Sin sorpresas, sin extras ocultos, sin letra pequeña. Sabes exactamente qué vas a recibir y cuánto vas a pagar desde el primer día."
     },
     {
       number: "03",
       title: "Primer pago (50%)",
-      description: "Realizas el 50% del pago acordado para comenzar el diseño. Proceso 100% seguro vía Stripe."
+      description: "Realizas el 50% del pago acordado para comenzar el diseño. Proceso 100% seguro vía Stripe con pasarela de pago encriptada. Tu dinero está protegido y solo pagas el resto cuando apruebes el diseño final."
     },
     {
       number: "04",
       title: "Diseño y revisiones",
-      description: "En 48h tienes un diseño inicial. Tienes hasta 3 revisiones incluidas para ajustar todo."
+      description: "En 48h tienes un diseño inicial completo y funcional para revisar. Tienes hasta 3 rondas de revisiones incluidas para ajustar colores, textos, imágenes y cualquier detalle. Tu feedback es clave para que la web quede perfecta."
     },
     {
       number: "05",
       title: "Aprobación y entrega",
-      description: "Cuando te gusta, pagas el 50% restante y tu web se publica. ¡Listo para recibir clientes!"
+      description: "Cuando te gusta el resultado final, pagas el 50% restante y tu web se publica en internet. Queda lista para recibir clientes, aparecer en Google y generar reservas. Incluye configuración completa y acceso a tu panel de control."
     }
   ];
 

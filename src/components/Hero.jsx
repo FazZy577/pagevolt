@@ -47,8 +47,9 @@ export default function Hero() {
           variants={fadeUp}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          Diseño webs para negocios locales que <strong>atraen clientes de verdad</strong>.
-          Bonitas, rápidas y con reservas automáticas incluidas — sin complicaciones.
+          Diseño webs profesionales para <strong>restaurantes, bares, cafeterías y negocios locales</strong> que atraen clientes de verdad.
+          Bonitas, rápidas y con <strong>reservas automáticas</strong> incluidas. Entrega en 48 horas — sin complicaciones ni tecnicismos.
+          Tu negocio merece una presencia online que refleje su calidad y que convierta visitas en clientes reales.
         </motion.p>
 
         <motion.div

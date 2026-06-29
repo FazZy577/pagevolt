@@ -11,24 +11,36 @@ export default function FAQ() {
 
   const faqs = [
     {
-      question: "¿Cuánto tarda en estar lista la web?",
-      answer: "Una web básica suele estar lista en 48-72 horas desde que me confirmas el proyecto. Con reservas automáticas, entre 4 y 7 días. Siempre te digo la fecha exacta antes de empezar."
+      question: "¿Cuánto cuesta una página web para un restaurante?",
+      answer: "El precio de una web para restaurante en Voltic empieza desde 150€ para webs esenciales hasta 300€ para webs completas con reservas online. El pago es 50% al inicio y 50% al aprobar el diseño. Sin costes ocultos ni sorpresas."
     },
     {
-      question: "¿Cuándo pago?",
-      answer: "Para empezar solo pido una reserva de 50€. El resto se paga cuando la web está lista y tú la has aprobado. Si algo no te convence, lo corregimos antes de cerrar."
+      question: "¿Cuánto tarda en estar lista la web?",
+      answer: "El diseño inicial está listo en 48 horas. Incluye 3 rondas de revisiones para ajustar todo a tu gusto. La web está publicada y funcionando en menos de una semana desde que empezamos. Para webs con reservas automáticas, entre 4 y 7 días."
+    },
+    {
+      question: "¿Trabajáis solo en España o también en otros países?",
+      answer: "Trabajamos en remoto para cualquier país. Hemos diseñado webs para negocios locales en España, Latinoamérica y Europa. El idioma y la moneda no son problema — nos adaptamos a tus necesidades."
+    },
+    {
+      question: "¿La web funciona bien en móvil?",
+      answer: "Sí, todas nuestras webs son 100% responsive y se adaptan perfectamente a móviles y tablets. Más del 70% de clientes buscan negocios desde el móvil, por lo que el diseño móvil es nuestra prioridad. Google también prioriza webs optimizadas para móvil."
+    },
+    {
+      question: "¿Qué incluye el diseño web para negocios locales?",
+      answer: "Incluye diseño personalizado adaptado a tu marca, adaptación perfecta a móvil, formulario de contacto, integración de reservas online, optimización básica para Google, galería de fotos, mapa de ubicación, y recomendaciones de hosting. Todo listo para empezar a recibir clientes."
     },
     {
       question: "¿Necesito saber de informática?",
-      answer: "Para nada. Me encargo de todo: diseño, publicación y configuración. Solo necesito que me cuentes cómo es tu negocio."
+      answer: "Para nada. Me encargo de todo: diseño, publicación, configuración técnica y optimización. Solo necesito que me cuentes cómo es tu negocio, qué ofreces y qué quieres transmitir. Yo me ocupo de la parte técnica."
     },
     {
       question: "¿Hay costes extra después?",
-      answer: "El precio que acordamos es el precio final. El único coste extra es el alojamiento anual de la web (~10-15€/año), que contratas tú directamente con el proveedor."
+      answer: "El precio que acordamos es el precio final del diseño. El único coste extra es el alojamiento anual de la web (aproximadamente 10-15€/año), que contratas tú directamente con el proveedor de hosting que te recomiendo."
     },
     {
       question: "¿Puedo pedir cambios después?",
-      answer: "Sí. Durante el proceso tienes revisiones incluidas según el plan. Cambios pequeños después de publicar los hago sin problema."
+      answer: "Sí. Durante el proceso tienes 3 rondas de revisiones incluidas según el plan. Cambios pequeños después de publicar (corregir un texto, actualizar una foto) los hago sin problema y sin coste adicional."
     }
   ];
 

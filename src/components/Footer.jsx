@@ -39,7 +39,16 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Columna 3 - Contacto */}
+          {/* Columna 3 - Servicios */}
+          <div className="footer-column">
+            <h3 className="footer-column-title">SERVICIOS</h3>
+            <nav className="footer-links">
+              <Link to="/diseno-web-restaurantes">Web para restaurantes</Link>
+              <Link to="/diseno-web-negocios-locales">Web para negocios locales</Link>
+            </nav>
+          </div>
+
+          {/* Columna 4 - Contacto */}
           <div className="footer-column">
             <h3 className="footer-column-title">CONTACTO</h3>
             <div className="footer-links">
@@ -59,7 +68,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Columna 4 - Empezar */}
+          {/* Columna 5 - Empezar */}
           <div className="footer-column">
             <h3 className="footer-column-title">EMPIEZA HOY</h3>
             <a

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://volt1c.netlify.app/sitemap.xml
