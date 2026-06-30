@@ -20,6 +20,10 @@
   border-radius: var(--radius-lg);
   padding: 2rem;
   transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .included-card:hover {
@@ -36,7 +40,7 @@
   justify-content: center;
   background: var(--color-accent-dim);
   border-radius: var(--radius-md);
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem;
   color: var(--color-accent);
   transition: all var(--transition-base);
 }
@@ -52,12 +56,14 @@
   font-weight: 600;
   margin-bottom: 0.75rem;
   color: var(--color-text);
+  text-align: center;
 }
 
 .included-description {
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--color-text-muted);
+  text-align: center;
 }
 
 /* Responsive */
