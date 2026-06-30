@@ -46,9 +46,10 @@
   justify-content: center;
   background: var(--color-accent-dim);
   border-radius: var(--radius-md);
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
   color: var(--color-accent);
   transition: all var(--transition-base);
+  flex-shrink: 0;
 }
 
 .coverage-card:hover .coverage-icon {
@@ -91,7 +92,7 @@
   .coverage-icon {
     width: 40px;
     height: 40px;
-    margin-bottom: 0.75rem;
+    margin: 0 auto 0.75rem;
   }
 
   .coverage-name {
@@ -108,6 +109,7 @@
   .coverage-icon {
     width: 36px;
     height: 36px;
+    margin: 0 auto;
   }
 
   .coverage-name {
