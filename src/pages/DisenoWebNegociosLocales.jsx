@@ -11,7 +11,7 @@ export default function DisenoWebNegociosLocales() {
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Diseño web profesional para negocios locales: peluquerías, clínicas, fontaneros, comercios. Webs rápidas que atraen clientes. Entrega en 48h.');
+      metaDescription.setAttribute('content', 'Diseño web profesional para negocios locales: peluquerías, clínicas, fontaneros, comercios. Webs rápidas que atraen clientes. Entrega en 72h.');
     }
   }, []);
 
@@ -24,7 +24,7 @@ export default function DisenoWebNegociosLocales() {
             <h1>Diseño web para negocios locales</h1>
             <p className="landing-subtitle">
               Webs profesionales para pequeños negocios que necesitan presencia online.
-              Diseño moderno, formularios de contacto y optimización para Google. Entrega en 48 horas.
+              Diseño moderno, formularios de contacto y optimización para Google. Entrega en 72 horas.
             </p>
             <a
               href="https://ig.me/m/volt1c"
@@ -88,7 +88,7 @@ export default function DisenoWebNegociosLocales() {
               <ul>
                 <li>
                   <strong>Ahorro de tiempo:</strong> crear una web profesional desde cero lleva semanas si no tienes
-                  experiencia. Nosotros te entregamos algo funcional en 48 horas para que puedas centrarte en tu negocio.
+                  experiencia. Nosotros te entregamos algo funcional en 72 horas para que puedas centrarte en tu negocio.
                 </li>
                 <li>
                   <strong>Diseño a medida:</strong> las plantillas prediseñadas son genéricas y muchos negocios
@@ -126,7 +126,7 @@ export default function DisenoWebNegociosLocales() {
                   <strong>Pago inicial (50%):</strong> pagas la mitad para arrancar el diseño. Pago seguro vía Stripe.
                 </li>
                 <li>
-                  <strong>Diseño y revisiones:</strong> en 48 horas tienes el primer diseño. Incluye hasta 3 rondas
+                  <strong>Diseño y revisiones:</strong> en 72 horas tienes el primer diseño. Incluye hasta 3 rondas
                   de cambios para ajustar todo.
                 </li>
                 <li>

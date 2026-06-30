@@ -48,7 +48,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           Diseño webs profesionales para <strong>restaurantes, bares, cafeterías y negocios locales</strong> que atraen clientes de verdad.
-          Bonitas, rápidas y con <strong>reservas automáticas</strong> incluidas. Entrega en 48 horas — sin complicaciones ni tecnicismos.
+          Bonitas, rápidas y con <strong>reservas automáticas</strong> incluidas. Entrega en 72 horas — sin complicaciones ni tecnicismos.
           Tu negocio merece una presencia online que refleje su calidad y que convierta visitas en clientes reales.
         </motion.p>
 
@@ -82,7 +82,7 @@ export default function Hero() {
             <div className="hero-stat-label">Tipos de servicio</div>
           </div>
           <div className="hero-stat">
-            <div className="hero-stat-number">48<span>h</span></div>
+            <div className="hero-stat-number">72<span>h</span></div>
             <div className="hero-stat-label">Diseño inicial</div>
           </div>
           <div className="hero-stat">

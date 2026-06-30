@@ -9,6 +9,7 @@ import Privacidad from './pages/Privacidad';
 import Terminos from './pages/Terminos';
 import DisenoWebRestaurantes from './pages/DisenoWebRestaurantes';
 import DisenoWebNegociosLocales from './pages/DisenoWebNegociosLocales';
+import SectorLanding from './pages/SectorLanding';
 import CustomCursor from './components/CustomCursor';
 import './styles/globals.css';
 import './styles/animations.css';
@@ -47,6 +48,7 @@ function App() {
         <Route path="/terminos" element={<Terminos />} />
         <Route path="/diseno-web-restaurantes" element={<DisenoWebRestaurantes />} />
         <Route path="/diseno-web-negocios-locales" element={<DisenoWebNegociosLocales />} />
+        <Route path="/diseno-web/:sector" element={<SectorLanding />} />
       </Routes>
     </BrowserRouter>
   );

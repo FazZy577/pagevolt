@@ -11,7 +11,7 @@ export default function DisenoWebRestaurantes() {
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Diseño web profesional para restaurantes, bares y cafeterías. Webs con reservas online, menú digital y galería de fotos. Entrega en 48h.');
+      metaDescription.setAttribute('content', 'Diseño web profesional para restaurantes, bares y cafeterías. Webs con reservas online, menú digital y galería de fotos. Entrega en 72h.');
     }
   }, []);
 
@@ -24,7 +24,7 @@ export default function DisenoWebRestaurantes() {
             <h1>Diseño web para restaurantes y bares</h1>
             <p className="landing-subtitle">
               Webs profesionales que atraen más clientes y facilitan las reservas. Diseño moderno,
-              menú digital incluido y optimización para Google. Entrega en 48 horas.
+              menú digital incluido y optimización para Google. Entrega en 72 horas.
             </p>
             <a
               href="https://ig.me/m/volt1c"
@@ -111,7 +111,7 @@ export default function DisenoWebRestaurantes() {
                   seguro vía Stripe.
                 </li>
                 <li>
-                  <strong>Diseño y revisiones:</strong> en 48 horas tienes el primer diseño listo.
+                  <strong>Diseño y revisiones:</strong> en 72 horas tienes el primer diseño listo.
                   Incluye 3 rondas de cambios para ajustar todo a tu gusto.
                 </li>
                 <li>

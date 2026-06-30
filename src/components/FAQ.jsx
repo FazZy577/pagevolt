@@ -16,7 +16,7 @@ export default function FAQ() {
     },
     {
       question: "¿Cuánto tarda en estar lista la web?",
-      answer: "El diseño inicial está listo en 48 horas. Incluye 3 rondas de revisiones para ajustar todo a tu gusto. La web está publicada y funcionando en menos de una semana desde que empezamos. Para webs con reservas automáticas, entre 4 y 7 días."
+      answer: "El diseño inicial está listo en 72 horas. Incluye 3 rondas de revisiones para ajustar todo a tu gusto. La web está publicada y funcionando en menos de una semana desde que empezamos. Para webs con reservas automáticas, entre 4 y 7 días."
     },
     {
       question: "¿Trabajáis solo en España o también en otros países?",

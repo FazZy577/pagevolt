@@ -26,7 +26,7 @@ export default function Process() {
     {
       number: "04",
       title: "Diseño y revisiones",
-      description: "En 48h tienes un diseño inicial completo y funcional para revisar. Tienes hasta 3 rondas de revisiones incluidas para ajustar colores, textos, imágenes y cualquier detalle. Tu feedback es clave para que la web quede perfecta."
+      description: "En 72h tienes un diseño inicial completo y funcional para revisar. Tienes hasta 3 rondas de revisiones incluidas para ajustar colores, textos, imágenes y cualquier detalle. Tu feedback es clave para que la web quede perfecta."
     },
     {
       number: "05",

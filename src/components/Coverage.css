@@ -1,0 +1,114 @@
+.coverage {
+  background: var(--color-bg);
+}
+
+.coverage-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+
+.coverage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+.coverage-card {
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all var(--transition-base);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-text);
+  min-height: 160px;
+}
+
+.coverage-card:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+}
+
+.coverage-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent-dim);
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  color: var(--color-accent);
+  transition: all var(--transition-base);
+}
+
+.coverage-card:hover .coverage-icon {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  transform: scale(1.1);
+}
+
+.coverage-name {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .coverage-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .coverage-header {
+    margin-bottom: 3rem;
+  }
+
+  .coverage-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .coverage-card {
+    padding: 1.5rem 1rem;
+    min-height: 140px;
+  }
+
+  .coverage-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.75rem;
+  }
+
+  .coverage-name {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .coverage-card {
+    padding: 1.25rem 0.875rem;
+    min-height: 130px;
+  }
+
+  .coverage-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .coverage-name {
+    font-size: 0.85rem;
+  }
+}
