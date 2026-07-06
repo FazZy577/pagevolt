@@ -12,7 +12,7 @@ export default function FAQ() {
   const faqs = [
     {
       question: "¿Cuánto cuesta una página web para un restaurante?",
-      answer: "El precio de una web para restaurante en Voltic empieza desde 150€ para webs esenciales hasta 300€ para webs completas con reservas online. El pago es 50% al inicio y 50% al aprobar el diseño. Sin costes ocultos ni sorpresas."
+      answer: "El precio de una web para restaurante en Voltted empieza desde 150€ para webs esenciales hasta 300€ para webs completas con reservas online. El pago es 50% al inicio y 50% al aprobar el diseño. Sin costes ocultos ni sorpresas."
     },
     {
       question: "¿Cuánto tarda en estar lista la web?",

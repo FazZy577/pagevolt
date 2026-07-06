@@ -7,7 +7,7 @@ import './DisenoWebRestaurantes.css';
 export default function DisenoWebNegociosLocales() {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Diseño web para negocios locales — Voltic';
+    document.title = 'Diseño web para negocios locales — Voltted';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {

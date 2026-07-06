@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERRA - Architecture Firm</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== VARIABLES CSS ===== */
+        :root {
+            --color-bg-dark: #0a0a0a;
+            --color-text-primary: #ffffff;
+            --color-text-secondary: rgba(255, 255, 255, 0.7);
+            --color-accent: #f5f5f5;
+            --color-warm-light: #ffb366;
+            --font-display: 'Inter', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+        }
+
+        /* ===== RESET Y BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-display);
+            background: var(--color-bg-dark);
+            color: var(--color-text-primary);
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* ===== CONTENEDOR PRINCIPAL ===== */
+        .hero-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #000;
+        }
+
+        /* ===== CAPA 1: FONDO CIELO (z-index: 1) ===== */
+        .bg-sky {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            /* CRÍTICO: Aquí va tu imagen de cielo oscuro/tormentoso */
+            background-image: url('./public/images/bg-cielo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            /* Efecto inicial de zoom para la animación */
+            transform: scale(1.1);
+        }
+
+        /* ===== CAPA 2: TEXTO GIGANTE TERRA (z-index: 2) ===== */
+        .brand-text-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .brand-text-layer h1 {
+            font-size: 15vw;
+            font-weight: 900;
+            letter-spacing: 0.02em;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            line-height: 1;
+            /* Efecto de cristal/brillo sutil */
+            mix-blend-mode: overlay;
+            opacity: 0.85;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+            /* Estado inicial para animación */
+            transform: translateY(100px);
+            opacity: 0;
+        }
+
+        /* ===== CAPA 3: CASA PRIMER PLANO (z-index: 3) ===== */
+        .foreground-house {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            /* CRÍTICO: Aquí va tu PNG transparente de la casa oscura */
+            background-image: url('./public/images/casa-oscura.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            pointer-events: none;
+        }
+
+        /* ===== CAPA 4: LUCES DE LA CASA (z-index: 4) ===== */
+        .house-lights-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+            /* CRÍTICO: Aquí va tu PNG transparente solo con las ventanas iluminadas */
+            background-image: url('./public/images/luces-ventanas.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            /* Estado inicial: luces apagadas */
+            opacity: 0;
+        }
+
+        /* ===== CAPA 5: UI FRONTAL (z-index: 5) ===== */
+        .ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* ===== HEADER UI ===== */
+        .header-ui {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 60px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-text-secondary);
+        }
+
+        .header-left,
+        .header-right {
+            opacity: 0;
+        }
+
+        /* ===== TOOLTIPS / DATA POINTS ===== */
+        .data-point {
+            position: absolute;
+            font-family: var(--font-mono);
+            color: var(--color-text-secondary);
+            opacity: 0;
+        }
+
+        /* Punto de conexión blanco */
+        .data-point::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--color-text-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transform: scale(0);
+        }
+
+        /* Línea conectora */
+        .data-point .connector-line {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            height: 1px;
+            width: 0;
+            transform-origin: left center;
+        }
+
+        /* Contenido del tooltip */
+        .data-point .content {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 20px;
+            border-radius: 2px;
+            min-width: 220px;
+        }
+
+        .data-point .content h3 {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-text-primary);
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .data-point .content p {
+            font-size: 9px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            margin: 4px 0;
+        }
+
+        /* ===== POSICIONAMIENTO ESPECÍFICO DE CADA DATA POINT ===== */
+
+        /* Data Point Izquierda (Location) */
+        .data-location {
+            left: 80px;
+            top: 45%;
+        }
+
+        .data-location::before {
+            left: -40px;
+            top: 12px;
+        }
+
+        .data-location .connector-line {
+            left: -32px;
+            top: 16px;
+            width: 24px;
+        }
+
+        /* Data Point Centro (Architecture) */
+        .data-architecture {
+            left: 50%;
+            top: 30%;
+            transform: translateX(-50%);
+        }
+
+        .data-architecture::before {
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -40px;
+        }
+
+        .data-architecture .connector-line {
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -32px;
+            width: 1px;
+            height: 24px;
+        }
+
+        /* Data Point Derecha (Amenities) */
+        .data-amenities {
+            right: 80px;
+            top: 55%;
+        }
+
+        .data-amenities::before {
+            right: -40px;
+            top: 12px;
+        }
+
+        .data-amenities .connector-line {
+            right: -32px;
+            top: 16px;
+            width: 24px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .brand-text-layer h1 {
+                font-size: 18vw;
+            }
+
+            .header-ui {
+                padding: 0 30px;
+                font-size: 10px;
+            }
+
+            .data-point {
+                font-size: 8px;
+            }
+
+            .data-location,
+            .data-amenities {
+                left: 20px;
+                right: auto;
+                top: auto;
+            }
+
+            .data-location {
+                bottom: 180px;
+            }
+
+            .data-architecture {
+                bottom: 100px;
+            }
+
+            .data-amenities {
+                bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO CONTAINER -->
+    <div class="hero-container">
+
+        <!-- CAPA 1: Fondo Cielo (z-index: 1) -->
+        <div class="bg-sky"></div>
+
+        <!-- CAPA 2: Texto Gigante TERRA (z-index: 2) -->
+        <div class="brand-text-layer">
+            <h1>TERRA</h1>
+        </div>
+
+        <!-- CAPA 3: Casa Primer Plano (z-index: 3) -->
+        <div class="foreground-house"></div>
+
+        <!-- CAPA 4: Luces de la Casa (z-index: 4) -->
+        <div class="house-lights-overlay"></div>
+
+        <!-- CAPA 5: UI Frontal (z-index: 5) -->
+        <div class="ui-layer">
+
+            <!-- Header -->
+            <div class="header-ui">
+                <div class="header-left">TERRA Architecture Firm</div>
+                <div class="header-right">Tennessee</div>
+            </div>
+
+            <!-- Data Point: Location (Izquierda) -->
+            <div class="data-point data-location">
+                <div class="connector-line"></div>
+                <div class="content">
+                    <h3>Location Tennessee</h3>
+                    <p>Sq Ft 1,379</p>
+                    <p>Bedrooms 4</p>
+                    <p>Bathrooms 3.5</p>
+                    <p>Built In 2014</p>
+                </div>
+            </div>
+
+            <!-- Data Point: Architecture (Centro) -->
+            <div class="data-point data-architecture">
+                <div class="connector-line"></div>
+                <div class="content">
+                    <h3>Architecture</h3>
+                    <p>Modern Minimalist</p>
+                    <p>Floor-to-Ceiling Glass</p>
+                    <p>Open Concept</p>
+                    <p>Hillside View</p>
+                </div>
+            </div>
+
+            <!-- Data Point: Amenities (Derecha) -->
+            <div class="data-point data-amenities">
+                <div class="connector-line"></div>
+                <div class="content">
+                    <h3>Amenities</h3>
+                    <p>Infinity Pool</p>
+                    <p>2-Car Garage</p>
+                    <p>Energy Efficient Home</p>
+                    <p>Smart Home System</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <!-- SCRIPT DE ANIMACIÓN -->
+    <script>
+        // ===== COREOGRAFÍA DE ANIMACIÓN GSAP =====
+
+        // Esperar a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Crear timeline principal de GSAP
+            const tl = gsap.timeline({
+                defaults: {
+                    ease: 'power3.out'
+                }
+            });
+
+            // ===== FASE 1: APARICIÓN DE LA MARCA (0-2s) =====
+            tl.to('.bg-sky', {
+                scale: 1,
+                duration: 2,
+                ease: 'power3.out'
+            }, 0)
+            .to('.brand-text-layer h1', {
+                y: 0,
+                opacity: 0.85,
+                duration: 2,
+                ease: 'power3.out'
+            }, 0)
+
+            // ===== FASE 2: ENCENDIDO DE LUCES (2-3.5s) =====
+            .to('.house-lights-overlay', {
+                opacity: 1,
+                duration: 1.5,
+                ease: 'power2.inOut'
+            }, 2)
+
+            // ===== FASE 3: DESPLIEGUE DE UI (3-5s) =====
+            // Animación de los puntos blancos
+            .to('.data-point::before', {
+                scale: 1,
+                duration: 0.4,
+                stagger: 0.2,
+                ease: 'back.out(2)'
+            }, 3)
+
+            // Animación de las líneas conectoras
+            .to('.data-location .connector-line', {
+                width: '24px',
+                duration: 0.6,
+                ease: 'power2.out'
+            }, 3.3)
+            .to('.data-architecture .connector-line', {
+                height: '24px',
+                duration: 0.6,
+                ease: 'power2.out'
+            }, 3.4)
+            .to('.data-amenities .connector-line', {
+                width: '24px',
+                duration: 0.6,
+                ease: 'power2.out'
+            }, 3.5)
+
+            // Animación de los contenidos de datos (fade in + slide up)
+            .to('.data-point', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.15,
+                ease: 'power2.out'
+            }, 3.6)
+
+            // Animación del header
+            .to('.header-left, .header-right', {
+                opacity: 1,
+                duration: 1,
+                stagger: 0.1,
+                ease: 'power2.out'
+            }, 4);
+
+        });
+    </script>
+</body>
+</html>

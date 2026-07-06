@@ -160,13 +160,13 @@ export default function SectorLanding() {
 
   useEffect(() => {
     if (sector && sectorsData[sector]) {
-      document.title = `${sectorsData[sector].titulo} | Voltic - Diseño Web`;
+      document.title = `${sectorsData[sector].titulo} | Voltted - Diseño Web`;
     } else {
-      document.title = 'Voltic - Diseño Web para Negocios Locales';
+      document.title = 'Voltted - Diseño Web para Negocios Locales';
     }
 
     return () => {
-      document.title = 'Voltic - Diseño Web para Negocios Locales';
+      document.title = 'Voltted - Diseño Web para Negocios Locales';
     };
   }, [sector]);
 

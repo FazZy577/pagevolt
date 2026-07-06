@@ -7,7 +7,7 @@ import './DisenoWebRestaurantes.css';
 export default function DisenoWebRestaurantes() {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Diseño web para restaurantes y bares — Voltic';
+    document.title = 'Diseño web para restaurantes y bares — Voltted';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {

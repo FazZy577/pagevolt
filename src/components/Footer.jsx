@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Columna 1 - Logo y descripción */}
           <div className="footer-column">
             <Link to="/" className="footer-logo">
-              Volt<span>ic</span>
+              Voltt<span>ed</span>
             </Link>
             <p className="footer-description">
               Diseño web para negocios locales. Bonito, rápido y que atrae clientes de verdad.
@@ -52,12 +52,12 @@ export default function Footer() {
           <div className="footer-column">
             <h3 className="footer-column-title">CONTACTO</h3>
             <div className="footer-links">
-              <a href="mailto:Voltix22@gmail.com" className="footer-contact-item">
+              <a href="mailto:popelvlad6@gmail.com" className="footer-contact-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                   <polyline points="22,6 12,13 2,6"/>
                 </svg>
-                Voltix22@gmail.com
+                popelvlad6@gmail.com
               </a>
               <a href="https://ig.me/m/volt1c" target="_blank" rel="noopener noreferrer" className="footer-contact-item">
                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -85,7 +85,7 @@ export default function Footer() {
 
         {/* Parte inferior */}
         <div className="footer-bottom">
-          <p className="footer-copyright">© 2026 Voltic · Todos los derechos reservados.</p>
+          <p className="footer-copyright">© 2026 Voltted · Todos los derechos reservados.</p>
           <div className="footer-legal">
             <Link to="/privacidad">Política de Privacidad</Link>
             <Link to="/terminos">Términos y Condiciones</Link>

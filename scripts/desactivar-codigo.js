@@ -24,7 +24,7 @@ function question(query) {
 }
 
 async function main() {
-  console.log('\n🔒 Desactivar Código de Pago - Voltic\n');
+  console.log('\n🔒 Desactivar Código de Pago - Voltted\n');
 
   const codeToDeactivate = await question('Código a desactivar: ');
 

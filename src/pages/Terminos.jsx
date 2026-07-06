@@ -20,7 +20,7 @@ export default function Terminos() {
           <section>
             <h2>1. Descripción del Servicio</h2>
             <p>
-              Voltic es un servicio de diseño y desarrollo de páginas web enfocado en
+              Voltted es un servicio de diseño y desarrollo de páginas web enfocado en
               negocios locales. Ofrecemos soluciones web profesionales, optimizadas para
               conversión y adaptadas a las necesidades específicas de cada cliente.
             </p>
@@ -91,22 +91,22 @@ export default function Terminos() {
             <p className="legal-highlight">
               <strong>⚠️ CLÁUSULA IMPORTANTE:</strong> Queda terminantemente prohibida cualquier
               modificación, copia, redistribución o uso del diseño web entregado sin consentimiento
-              expreso y por escrito de Voltic. El incumplimiento de esta cláusula podrá derivar
+              expreso y por escrito de Voltted. El incumplimiento de esta cláusula podrá derivar
               en acciones legales, incluyendo reclamación de daños y perjuicios.
             </p>
             <p>
-              Voltic se reserva todos los derechos sobre los diseños hasta el pago completo
+              Voltted se reserva todos los derechos sobre los diseños hasta el pago completo
               del proyecto (100%). Una vez completado el pago total:
             </p>
             <ul>
               <li>El cliente obtiene los derechos de uso del diseño para su negocio</li>
-              <li>Voltic retiene el derecho a mostrar el proyecto en su portfolio</li>
+              <li>Voltted retiene el derecho a mostrar el proyecto en su portfolio</li>
               <li>El cliente NO puede revender, redistribuir o ceder el diseño a terceros sin autorización escrita</li>
-              <li>El cliente NO puede modificar el código fuente sin consentimiento de Voltic</li>
+              <li>El cliente NO puede modificar el código fuente sin consentimiento de Voltted</li>
             </ul>
             <p>
               Para solicitar permisos especiales de uso, modificación o redistribución, contacta
-              con nosotros a través de Instagram: <strong>@Voltic</strong>
+              con nosotros a través de Instagram: <strong>@Volt1c</strong>
             </p>
           </section>
 
@@ -121,7 +121,7 @@ export default function Terminos() {
               <li>Si se cancela después de la aprobación del diseño: NO hay reembolso</li>
             </ul>
             <p>
-              <strong>Cancelación por Voltic:</strong> En caso de que no podamos completar
+              <strong>Cancelación por Voltted:</strong> En caso de que no podamos completar
               el proyecto por causas ajenas a nuestra voluntad, se reembolsará el 100% de los
               pagos realizados.
             </p>
@@ -155,7 +155,7 @@ export default function Terminos() {
           <section>
             <h2>9. Limitación de Responsabilidad</h2>
             <p>
-              Voltic no se hace responsable de:
+              Voltted no se hace responsable de:
             </p>
             <ul>
               <li>Pérdidas económicas derivadas del uso o mal uso de la página web entregada</li>
@@ -186,7 +186,7 @@ export default function Terminos() {
           <section>
             <h2>11. Modificación de los Términos</h2>
             <p>
-              Voltic se reserva el derecho de modificar estos términos y condiciones en
+              Voltted se reserva el derecho de modificar estos términos y condiciones en
               cualquier momento. Las modificaciones entrarán en vigor para proyectos iniciados
               después de la fecha de actualización.
             </p>
@@ -211,7 +211,7 @@ export default function Terminos() {
               Para cualquier consulta sobre estos términos y condiciones:
             </p>
             <ul>
-              <li>Instagram: <a href="https://ig.me/m/volt1c" target="_blank" rel="noopener noreferrer">@Voltic</a></li>
+              <li>Instagram: <a href="https://ig.me/m/volt1c" target="_blank" rel="noopener noreferrer">@Volt1c</a></li>
               <li>Sitio web: pagevolt.es</li>
             </ul>
           </section>

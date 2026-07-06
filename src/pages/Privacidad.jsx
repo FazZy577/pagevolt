@@ -20,7 +20,7 @@ export default function Privacidad() {
           <section>
             <h2>1. Información que Recopilamos</h2>
             <p>
-              En Voltic recopilamos únicamente la información necesaria para proporcionar
+              En Voltted recopilamos únicamente la información necesaria para proporcionar
               nuestros servicios de diseño web:
             </p>
             <ul>

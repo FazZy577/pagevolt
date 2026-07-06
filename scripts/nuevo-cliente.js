@@ -173,7 +173,7 @@ exports.handler = async (event, context) => {
 }
 
 async function main() {
-  console.log('\n🚀 Generador Automatizado de Códigos de Pago - Voltic\n');
+  console.log('\n🚀 Generador Automatizado de Códigos de Pago - Voltted\n');
 
   // Recoger datos del cliente
   const clientName = await question('Nombre del negocio: ');
