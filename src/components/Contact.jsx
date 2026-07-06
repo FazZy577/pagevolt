@@ -35,7 +35,7 @@ export default function Contact() {
 
           <div className="contact-actions">
             <a
-              href="https://ig.me/m/volt1c"
+              href="https://ig.me/m/voltted_"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary contact-cta"

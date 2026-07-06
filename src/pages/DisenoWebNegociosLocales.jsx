@@ -27,7 +27,7 @@ export default function DisenoWebNegociosLocales() {
               Diseño moderno, formularios de contacto y optimización para Google. Entrega en 72 horas.
             </p>
             <a
-              href="https://ig.me/m/volt1c"
+              href="https://ig.me/m/voltted_"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"
@@ -142,7 +142,7 @@ export default function DisenoWebNegociosLocales() {
                   con una propuesta personalizada y precio cerrado. Sin compromiso.
                 </p>
                 <a
-                  href="https://ig.me/m/volt1c"
+                  href="https://ig.me/m/voltted_"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"

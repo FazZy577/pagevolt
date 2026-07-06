@@ -27,7 +27,7 @@ export default function DisenoWebRestaurantes() {
               menú digital incluido y optimización para Google. Entrega en 72 horas.
             </p>
             <a
-              href="https://ig.me/m/volt1c"
+              href="https://ig.me/m/voltted_"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"
@@ -170,7 +170,7 @@ export default function DisenoWebRestaurantes() {
                   con una propuesta personalizada y precio cerrado.
                 </p>
                 <a
-                  href="https://ig.me/m/volt1c"
+                  href="https://ig.me/m/voltted_"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary"

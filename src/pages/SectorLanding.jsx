@@ -205,7 +205,7 @@ export default function SectorLanding() {
             <h1 className="sector-title">{sectorData.titulo}</h1>
             <p className="sector-description">{sectorData.descripcion}</p>
             <div className="sector-cta">
-              <a href="https://ig.me/m/volt1c" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+              <a href="https://ig.me/m/voltted_" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                 Hablemos de tu proyecto
               </a>
               <a href="#precios" className="btn btn-secondary">
@@ -275,7 +275,7 @@ export default function SectorLanding() {
                   <span className="pricing-simple-currency">€</span>99
                 </div>
                 <p className="pricing-simple-description">Perfecto para empezar. Diseño profesional y adaptado a móvil.</p>
-                <a href="https://ig.me/m/volt1c" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+                <a href="https://ig.me/m/voltted_" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
                   Consultar
                 </a>
               </div>
@@ -287,7 +287,7 @@ export default function SectorLanding() {
                   <span className="pricing-simple-currency">€</span>249
                 </div>
                 <p className="pricing-simple-description">Todo lo anterior + sistema de reservas automático integrado.</p>
-                <a href="https://ig.me/m/volt1c" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                <a href="https://ig.me/m/voltted_" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                   Empezar ahora
                 </a>
               </div>
@@ -298,7 +298,7 @@ export default function SectorLanding() {
                   <span className="pricing-simple-currency">€</span>149
                 </div>
                 <p className="pricing-simple-description">¿Ya tienes web? La mejoramos completamente.</p>
-                <a href="https://ig.me/m/volt1c" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+                <a href="https://ig.me/m/voltted_" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
                   Consultar
                 </a>
               </div>
@@ -319,7 +319,7 @@ export default function SectorLanding() {
             <p className="section-subtitle">
               Diseño en 72 horas. Pago 50%+50%. Sin cuotas mensuales.
             </p>
-            <a href="https://ig.me/m/volt1c" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-large">
+            <a href="https://ig.me/m/voltted_" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-large">
               Contactar por Instagram
             </a>
           </motion.div>

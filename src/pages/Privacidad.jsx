@@ -112,7 +112,7 @@ export default function Privacidad() {
             </ul>
             <p>
               Para ejercer cualquiera de estos derechos, contacta con nosotros a través de
-              Instagram: <strong>@Volt1c</strong>
+              Instagram: <strong>@voltted_</strong>
             </p>
           </section>
 
@@ -132,7 +132,7 @@ export default function Privacidad() {
               tu información personal, contáctanos:
             </p>
             <ul>
-              <li>Instagram: <a href="https://ig.me/m/volt1c" target="_blank" rel="noopener noreferrer">@Volt1c</a></li>
+              <li>Instagram: <a href="https://ig.me/m/voltted_" target="_blank" rel="noopener noreferrer">@voltted_</a></li>
               <li>Sitio web: pagevolt.es</li>
             </ul>
           </section>
